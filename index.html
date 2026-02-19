@@ -1,0 +1,3185 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <!-- SEO Meta Tags -->
+    <title>V. Gallery | Contemporary Art & Poetry</title>
+    <meta name="description" content="V. Gallery features contemporary artworks paired with original poetry. Explore limited edition prints and commission custom pieces.">
+    <meta name="keywords" content="contemporary art, poetry, limited edition prints, art gallery, original artworks, art commission">
+    <meta name="author" content="V. Gallery">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="googlebot" content="index, follow">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="V. Gallery | Contemporary Art & Poetry">
+    <meta property="og:description" content="Explore contemporary artworks paired with original poetry. Limited editions and commissions available.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vgallery.art">
+    <meta property="og:image" content="https://vgallery.art/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="V. Gallery - Contemporary Art & Poetry">
+    <meta property="og:site_name" content="V. Gallery">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="V. Gallery | Contemporary Art & Poetry">
+    <meta name="twitter:description" content="Contemporary artworks paired with original poetry.">
+    <meta name="twitter:image" content="https://vgallery.art/images/twitter-image.jpg">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "ArtGallery",
+                "@id": "https://vgallery.art/#gallery",
+                "name": "V. Gallery",
+                "description": "Contemporary art gallery featuring limited edition artworks paired with original poetry",
+                "url": "https://vgallery.art",
+                "image": "https://vgallery.art/images/gallery-image.jpg",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "US"
+                }
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://vgallery.art/#website",
+                "url": "https://vgallery.art",
+                "name": "V. Gallery",
+                "description": "Contemporary Art & Poetry Gallery",
+                "publisher": {
+                    "@id": "https://vgallery.art/#gallery"
+                }
+            }
+        ]
+    }
+    </script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.cdnfonts.com/css/copperplate" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    
+    <!-- HTML2Canvas for sharing -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    
+    <!-- CSS -->
+    <style>
+        /* ===== CSS RESET & BASE ===== */
+        :root {
+            --color-primary: #000;
+            --color-secondary: #D0A380;
+            --color-light: #f8f8f8;
+            --color-gray-light: #eee;
+            --color-gray: #888;
+            --color-gray-dark: #555;
+            --border-radius: 3px;
+            --transition: all 0.3s ease;
+            --shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            height: 100%;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Copperplate', 'Georgia', serif;
+            background: #fff;
+            color: #333;
+            overflow: hidden;
+            height: 100vh;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== ACCESSIBILITY UTILITIES ===== */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* ===== INTRODUCTION PAGE ===== */
+        .intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            text-align: center;
+            opacity: 1;
+            transition: opacity 0.6s ease;
+        }
+
+        .intro-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .intro-content {
+            max-width: 500px;
+        }
+
+        .intro-poem {
+            font-size: clamp(14px, 2.5vh, 18px);
+            line-height: 1.6;
+            color: var(--color-gray-dark);
+            margin-bottom: 40px;
+            white-space: pre-line;
+            font-family: 'Copperplate', sans-serif;
+        }
+
+        .intro-signature {
+            font-size: clamp(16px, 3vh, 22px);
+            color: #222;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        .enter-gallery {
+            background: none;
+            border: 1px solid var(--color-primary);
+            color: var(--color-primary);
+            padding: 12px 32px;
+            font-size: 11px;
+            font-family: inherit;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .enter-gallery:hover {
+            background: var(--color-primary);
+            color: #fff;
+        }
+
+        /* ===== MAIN LAYOUT ===== */
+        .split-container {
+            display: grid;
+            grid-template-rows: minmax(45vh, 1fr) minmax(45vh, 1fr);
+            height: 100vh;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .split-container.active {
+            opacity: 1;
+        }
+
+        @media (max-height: 700px) {
+            .split-container {
+                grid-template-rows: minmax(50vh, 1fr) minmax(50vh, 1fr);
+            }
+        }
+
+        @media (orientation: landscape) and (max-height: 500px) {
+            .split-container {
+                grid-template-columns: minmax(20vw, 1fr) minmax(45vw, 1fr);
+                grid-template-rows: 1fr;
+            }
+        }
+
+        /* ===== TOP HALF: ARTWORK DISPLAY ===== */
+        .artwork-half {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .frame-container {
+            width: 100%;
+            height: 100%;
+            max-width: min(500px, 90vh);
+            max-height: min(500px, 90vh);
+            display: flex;
+            padding: clamp(20px, 5vh, 50px);
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+        }
+
+        .art-frame {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            border: 5px solid black;
+            padding: 05px;
+            background: #fff;
+            transition: all 0.4s ease;
+        }
+
+        .frame-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            background: none;
+        }
+
+        .art-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .art-image.loaded {
+            opacity: 1;
+            animation: none;
+        }
+
+        /* ===== BOTTOM HALF: CONTENT AREA ===== */
+        .poem-half {
+            background: var(--color-light);
+            position: relative;
+            overflow-y: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: clamp(20px, 5vh, 40px);
+        }
+
+        .poem-container {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .poem {
+            font-size: 11px;
+            line-height: 1.4;
+            color: var(--color-primary);
+            margin-bottom: 15px;
+            white-space: pre-line;
+            font-family: 'Copperplate', sans-serif;
+            width: 100%;
+        }
+
+        /* ===== TITLE & AUTHOR ===== */
+        .title-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            flex-wrap: nowrap;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .title-author-text {
+            align-items: center;
+            gap: 4px;
+            justify-content: left;
+        }
+
+        .title-author-icons {
+            display: flex;
+            gap: 4px;
+            flex-shrink: 0;
+        }
+
+        #artTitle, #artAuthor {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 150px;
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--color-gray-dark);
+            line-height: 1.3;
+            letter-spacing: 0;
+        }
+
+        #artTitle {
+            text-align: right;
+        }
+
+        #artAuthor {
+            text-align: left;
+        }
+
+        .separator {
+            color: var(--color-gray);
+            margin: 0 4px;
+            flex-shrink: 0;
+        }
+
+        /* Heart and Info icons */
+        .icon-button {
+            background: none;
+            border: none;
+            font-size: 14px;
+            color: var(--color-gray);
+            cursor: pointer;
+            padding: 6px;
+            transition: var(--transition);
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .icon-button:hover {
+            color: var(--color-primary);
+            background-color: rgba(0,0,0,0.03);
+        }
+
+        .icon-button.heart.saved {
+            color: #e25555;
+        }
+
+        .icon-button.info {
+            font-size: 13px;
+            font-weight: bold;
+            font-family: serif;
+        }
+
+        /* ===== BOTTOM NAVIGATION ===== */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--color-light);
+            border-top: 1px solid var(--color-gray-light);
+            z-index: 100;
+            transition: var(--transition);
+            padding: 6px 20px;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Left side: Commission & Tools */
+        .nav-left {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        /* Right side: Navigation arrows */
+        .nav-right {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-size: 11px;
+            color: var(--color-gray);
+            text-decoration: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: inherit;
+            padding: 8px 0;
+            position: relative;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-link.commission {
+            font-weight: 500;
+            color: var(--color-primary);
+        }
+
+        .nav-link.tools {
+            font-size: 18px;
+            color: var(--color-gray);
+            padding: 4px 0;
+            letter-spacing: 4px;
+        }
+
+        .nav-link.tools:hover {
+            color: var(--color-primary);
+        }
+
+        /* Navigation arrows with integrated indicator */
+        .nav-arrows {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .arrow-btn {
+            background: none;
+            border: none;
+            font-size: 16px;
+            color: var(--color-gray-dark);
+            cursor: pointer;
+            padding: 8px;
+            transition: var(--transition);
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .arrow-btn:hover {
+            color: var(--color-primary);
+            background-color: rgba(0,0,0,0.03);
+        }
+
+        .arrow-btn:disabled {
+            color: #ccc;
+            cursor: not-allowed;
+            background: none;
+        }
+
+        .page-indicator {
+            font-size: 11px;
+            color: var(--color-gray);
+            min-width: 40px;
+            text-align: center;
+        }
+
+        /* ===== STORYTELLING ACQUISITION MODAL ===== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            z-index: 1001;
+            display: none;
+            backdrop-filter: blur(2px);
+        }
+
+        .modal-overlay.active {
+            display: block;
+        }
+
+        .acquisition-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.95);
+            background: #fff;
+            padding: 30px;
+            width: 90%;
+            max-width: 420px;
+            max-height: 80vh;
+            overflow-y: auto;
+            z-index: 1002;
+            border-radius: var(--border-radius);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active .acquisition-modal {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .modal-header {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--color-gray-light);
+            position: relative;
+        }
+
+        .modal-title {
+            font-size: 16px;
+            font-weight: 400;
+            color: #222;
+            letter-spacing: -0.3px;
+            text-align: center;
+            font-family: 'Copperplate', sans-serif;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: var(--color-gray);
+            cursor: pointer;
+            padding: 5px;
+            transition: var(--transition);
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-modal:hover {
+            color: var(--color-primary);
+            background-color: rgba(0,0,0,0.03);
+        }
+
+        /* Storytelling Sections */
+        .story-section {
+            margin-bottom: 25px;
+        }
+
+        .story-section h4 {
+            font-size: 12px;
+            color: var(--color-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .artwork-context p {
+            font-size: 13px;
+            color: var(--color-gray-dark);
+            line-height: 1.5;
+            margin-bottom: 6px;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        /* Collector's Journey - Side by Side Layout */
+        .collector-journey {
+            margin: 30px 0;
+        }
+
+        .journey-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .journey-option {
+            border: 1px solid var(--color-gray-light);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            background: #fff;
+            text-align: center;
+        }
+
+        .journey-option:hover {
+            border-color: var(--color-secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .journey-option.selected {
+            border-color: var(--color-secondary);
+            background: linear-gradient(to right, rgba(208, 163, 128, 0.05), transparent);
+        }
+
+        .original-work {
+            border-top: 3px solid var(--color-secondary);
+        }
+
+        .artists-print {
+            border-top: 1px solid var(--color-gray-light);
+        }
+
+        .journey-option h5 {
+            font-size: 14px;
+            color: #222;
+            margin-bottom: 8px;
+            font-family: 'Copperplate', sans-serif;
+        }
+
+        .option-subtitle {
+            font-size: 13px;
+            color: var(--color-gray-dark);
+            margin-bottom: 15px;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .benefits-list {
+            list-style: none;
+            padding-left: 0;
+            text-align: left;
+        }
+
+        .benefits-list li {
+            font-size: 11px;
+            color: var(--color-gray);
+            line-height: 1.5;
+            margin-bottom: 6px;
+            font-family: 'Work Sans', sans-serif;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .benefits-list li:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--color-secondary);
+        }
+
+        /* Schedule viewing option */
+        .schedule-option {
+            margin: 20px 0;
+            padding-top: 15px;
+            border-top: 1px solid var(--color-gray-light);
+            display: none;
+        }
+
+        .schedule-option.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .schedule-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .schedule-label {
+            font-size: 13px;
+            color: #222;
+            line-height: 1.4;
+            flex: 1;
+            font-family: 'Copperplate', sans-serif;
+        }
+
+        .schedule-details {
+            font-size: 11px;
+            color: var(--color-gray);
+            margin-top: 5px;
+            line-height: 1.3;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        /* Print options (hidden by default) */
+        .print-options {
+            margin: 20px 0;
+            display: none;
+        }
+
+        .print-options.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .size-options, .frame-options {
+            margin: 15px 0;
+        }
+
+        .size-row, .frame-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--color-gray-light);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .size-row:last-child, .frame-row:last-child {
+            border-bottom: none;
+        }
+
+        .size-row:hover, .frame-row:hover {
+            padding-left: 5px;
+        }
+
+        .size-row.selected, .frame-row.selected {
+            position: relative;
+        }
+
+        .size-row.selected:before, .frame-row.selected:before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--color-secondary);
+            border-radius: 50%;
+        }
+
+        .size-dimensions, .frame-name {
+            font-size: 13px;
+            color: #222;
+            font-family: 'Copperplate', sans-serif;
+        }
+
+        .size-price, .frame-price {
+            font-size: 13px;
+            color: var(--color-primary);
+            font-family: 'Copperplate', sans-serif;
+        }
+
+        /* Selection summary */
+        .selection-summary {
+            background: var(--color-light);
+            border: 1px solid var(--color-gray-light);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        .selection-summary.active {
+            display: block;
+        }
+
+        .summary-title {
+            font-size: 13px;
+            margin-bottom: 15px;
+            color: #333;
+            font-weight: 400;
+            text-align: center;
+            font-family: 'Copperplate', sans-serif;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            font-size: 12px;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+
+        .summary-item.total {
+            font-weight: 400;
+            color: #333;
+            font-size: 14px;
+            padding-top: 12px;
+            margin-top: 8px;
+            border-top: 1px solid var(--color-gray-light);
+            font-family: 'Copperplate', sans-serif;
+        }
+
+        /* Contact form */
+        .contact-form {
+            margin-top: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 12px;
+            color: var(--color-gray-dark);
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--color-gray-light);
+            color: var(--color-gray-dark);
+            background: #fff;
+            font-size: 16px;
+            font-family: 'Work Sans', sans-serif;
+            transition: var(--transition);
+            border-radius: var(--border-radius);
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .form-textarea {
+            min-height: 30px;
+            resize: vertical;
+        }
+
+        /* Action buttons */
+        .modal-actions {
+            margin-top: 20px;
+        }
+
+        .action-button {
+            width: 100%;
+            padding: 12px;
+            background: var(--color-primary);
+            color: #fff;
+            border: 1px solid var(--color-primary);
+            font-size: 12px;
+            font-family: 'Work Sans', sans-serif;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+            border-radius: var(--border-radius);
+        }
+
+        .action-button:hover {
+            background: #333;
+        }
+
+        .action-button.secondary {
+            background: transparent;
+            color: var(--color-primary);
+        }
+
+        .action-button.secondary:hover {
+            background: rgba(0,0,0,0.03);
+        }
+
+        /* ===== TOOLS OVERLAY ===== */
+        .tools-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            z-index: 1001;
+            display: none;
+            backdrop-filter: blur(2px);
+        }
+
+        .tools-overlay.active {
+            display: block;
+        }
+
+        .tools-modal {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #fff;
+            padding: 30px 20px;
+            z-index: 1002;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .tools-overlay.active .tools-modal {
+            transform: translateY(0);
+        }
+
+        .tools-header {
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .tools-title {
+            font-size: 13px;
+            color: var(--color-gray-dark);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-family: 'Copperplate', sans-serif;
+        }
+
+        .close-tools {
+            position: absolute;
+            top: -10px;
+            right: 0;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--color-gray);
+            cursor: pointer;
+            padding: 5px;
+            transition: var(--transition);
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-tools:hover {
+            color: var(--color-primary);
+        }
+
+        .tools-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            background: var(--color-gray-light);
+        }
+
+        .tools-action {
+            display: flex;
+            align-items: center;
+            padding: 18px 20px;
+            background: #fff;
+            border: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--color-gray-dark);
+            font-size: 14px;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .tools-action:hover {
+            background-color: rgba(0,0,0,0.03);
+            color: var(--color-primary);
+        }
+
+        .tools-action svg {
+            width: 18px;
+            height: 18px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        /* ===== YOUR COLLECTION VIEW ===== */
+        .collection-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            z-index: 1001;
+            display: none;
+        }
+
+        .collection-overlay.active {
+            display: block;
+        }
+
+        .collection-header {
+            padding: 25px 20px 15px;
+            border-bottom: 1px solid var(--color-gray-light);
+            background: #fff;
+            position: relative;
+        }
+
+        .collection-title {
+            font-size: 16px;
+            font-weight: 400;
+            color: #222;
+            text-align: center;
+            font-family: 'Copperplate', sans-serif;
+        }
+
+        .close-collection {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--color-gray);
+            cursor: pointer;
+            padding: 5px;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-collection:hover {
+            color: var(--color-primary);
+        }
+
+        .collection-grid {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+            height: calc(100vh - 80px);
+            overflow-y: auto;
+        }
+
+        @media (min-width: 768px) {
+            .collection-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+                padding: 30px;
+            }
+        }
+
+        .collection-item {
+            border: 1px solid var(--color-gray-light);
+            border-radius: var(--border-radius);
+            padding: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+        }
+
+        .collection-item:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .collection-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        .collection-image.loaded {
+            animation: none;
+        }
+
+        .empty-collection {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--color-gray);
+        }
+
+        .empty-collection-title {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: var(--color-gray-dark);
+            font-family: 'Copperplate', sans-serif;
+        }
+
+        .empty-collection-message {
+            font-size: 13px;
+            line-height: 1.5;
+            max-width: 300px;
+            margin: 0 auto;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        /* ===== SMART ADVISOR VIEW ===== */
+        .advisor-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            z-index: 1001;
+            display: none;
+            overflow-y: auto;
+        }
+
+        .advisor-overlay.active {
+            display: block;
+        }
+
+        .advisor-header {
+            padding: 25px 20px 15px;
+            border-bottom: 1px solid var(--color-gray-light);
+            background: #fff;
+            position: relative;
+        }
+
+        .advisor-title {
+            font-size: 16px;
+            font-weight: 400;
+            color: #222;
+            text-align: center;
+            font-family: 'Copperplate', sans-serif;
+        }
+
+        .close-advisor {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--color-gray);
+            cursor: pointer;
+            padding: 5px;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-advisor:hover {
+            color: var(--color-primary);
+        }
+
+        .advisor-content {
+            padding: 30px 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .advisor-section {
+            margin-bottom: 30px;
+        }
+
+        .advisor-section-title {
+            font-size: 14px;
+            color: var(--color-gray-dark);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--color-gray-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-family: 'Copperplate', sans-serif;
+        }
+
+        .contact-details {
+            font-size: 13px;
+            color: var(--color-gray-dark);
+            line-height: 1.8;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .contact-details p {
+            margin-bottom: 10px;
+        }
+
+        .contact-link {
+            color: var(--color-primary);
+            text-decoration: none;
+            display: inline-block;
+            padding: 2px 0;
+            border-bottom: 1px solid transparent;
+            transition: var(--transition);
+        }
+
+        .contact-link:hover {
+            border-bottom-color: var(--color-primary);
+        }
+
+        .advisor-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .advisor-list li {
+            margin-bottom: 8px;
+            padding-left: 15px;
+            position: relative;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 13px;
+            color: var(--color-gray-dark);
+        }
+
+        .advisor-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+        }
+
+        /* ===== COMMISSION VIEW ===== */
+        .commission-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            z-index: 1001;
+            display: none;
+            overflow-y: auto;
+        }
+
+        .commission-overlay.active {
+            display: block;
+        }
+
+        .commission-header {
+            padding: 25px 20px 15px;
+            border-bottom: 1px solid var(--color-gray-light);
+            background: #fff;
+            position: relative;
+        }
+
+        .commission-title {
+            font-size: 16px;
+            font-weight: 400;
+            color: #222;
+            text-align: center;
+            font-family: 'Copperplate', sans-serif;
+        }
+
+        .close-commission {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--color-gray);
+            cursor: pointer;
+            padding: 5px;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-commission:hover {
+            color: var(--color-primary);
+        }
+
+        .commission-content {
+            padding: 30px 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .commission-intro {
+            font-size: 13px;
+            color: var(--color-gray-dark);
+            line-height: 1.6;
+            margin-bottom: 30px;
+            text-align: center;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        /* ===== SUCCESS OVERLAY ===== */
+        .success-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            z-index: 1003;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .success-overlay.active {
+            display: flex;
+        }
+
+        .success-content {
+            max-width: 400px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .success-icon {
+            font-size: 48px;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+        }
+
+        .success-title {
+            font-size: 18px;
+            color: #222;
+            margin-bottom: 15px;
+            font-family: 'Copperplate', sans-serif;
+        }
+
+        .success-message {
+            font-size: 13px;
+            color: var(--color-gray-dark);
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .countdown {
+            font-size: 11px;
+            color: var(--color-gray);
+            margin-bottom: 20px;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        /* ===== NOTIFICATION ===== */
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+            background: var(--color-primary);
+            color: #fff;
+            padding: 12px 24px;
+            font-size: 12px;
+            z-index: 10000;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            max-width: 80%;
+            text-align: center;
+            pointer-events: none;
+            font-family: 'Work Sans', sans-serif;
+            border-radius: var(--border-radius);
+        }
+
+        .notification.active {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ===== SHARE OVERLAY ===== */
+        .share-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1001;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .share-overlay.active {
+            display: flex;
+        }
+
+        .share-container {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .share-image {
+            max-width: 100%;
+            max-height: 70vh;
+            display: block;
+            background: white;
+        }
+
+        .share-actions {
+            position: fixed;
+            bottom: 30px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 0 20px;
+        }
+
+        /* ===== LOADING ===== */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .loading.active {
+            display: flex;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--color-gray-light);
+            border-top-color: var(--color-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-height: 600px) {
+            .split-container {
+                grid-template-rows: minmax(55vh, 1fr) minmax(55vh, 1fr);
+            }
+            
+            .poem-half {
+                padding: 15px;
+            }
+            
+            .frame-container {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .title-author {
+                gap: 12px;
+            }
+            
+            #artTitle, #artAuthor {
+                max-width: 130px;
+            }
+            
+            .icon-button {
+                width: 30px;
+                height: 30px;
+                padding: 5px;
+            }
+            
+            .journey-options {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title-author {
+                gap: 10px;
+            }
+            
+            #artTitle, #artAuthor {
+                max-width: 110px;
+            }
+            
+            .separator {
+                margin: 0 3px;
+            }
+            
+            .collection-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .title-author {
+                gap: 8px;
+            }
+            
+            #artTitle, #artAuthor {
+                max-width: 95px;
+            }
+        }
+
+        @media (orientation: landscape) and (max-height: 500px) {
+            .split-container {
+                grid-template-columns: minmax(50vw, 1fr) minmax(50vw, 1fr);
+                grid-template-rows: 1fr;
+            }
+            
+            .artwork-half, .poem-half {
+                height: 100vh;
+            }
+            
+            .poem-half {
+                overflow-y: auto;
+            }
+            
+            .title-author {
+                gap: 20px;
+            }
+            
+            #artTitle, #artAuthor {
+                max-width: 180px;
+            }
+        }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            .bottom-nav,
+            .title-author-icons,
+            .modal-overlay,
+            .tools-overlay,
+            .intro-overlay,
+            .notification {
+                display: none;
+            }
+            
+            .split-container {
+                display: block;
+                height: auto;
+                opacity: 1;
+            }
+            
+            .artwork-half {
+                page-break-after: always;
+                height: auto;
+                padding: 20mm;
+            }
+            
+            .poem-half {
+                height: auto;
+                padding: 20mm;
+            }
+            
+            .art-frame {
+                border: 0.5pt solid #000;
+                box-shadow: none;
+            }
+            
+            body {
+                background: white;
+                color: black;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Screen reader announcements -->
+    <div id="sr-announce" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Introduction Page -->
+    <div class="intro-overlay" id="introOverlay">
+        <div class="intro-content">
+            <div class="intro-poem" id="introPoem">
+                In the space between sight and sense
+                Where color finds its voice
+                And silence learns to speak
+                
+                Each stroke a word unwritten
+                Each hue a breath unspoken
+                In the gallery of becoming
+                
+                To witness is to create
+                To see is to understand
+                The poetry of presence
+            </div>
+            <div class="intro-signature">V.</div>
+            <button class="enter-gallery" onclick="Gallery.enterGallery()">
+                Enter Gallery
+            </button>
+        </div>
+    </div>
+
+    <!-- Loading overlay -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Success Overlay -->
+    <div class="success-overlay" id="successOverlay">
+        <div class="success-content">
+            <div class="success-icon">✓</div>
+            <h3 class="success-title" id="successTitle">Request Submitted</h3>
+            <p class="success-message" id="successMessage">
+                Thank you for your inquiry. We will contact you within 24 hours 
+                to discuss next steps.
+            </p>
+            <div class="countdown" id="countdown">
+                Returning to gallery in <span id="countdownNumber">5</span> seconds
+            </div>
+            <button class="action-button" onclick="Gallery.returnToGallery()">
+                View Artwork
+            </button>
+        </div>
+    </div>
+
+    <!-- Share overlay -->
+    <div class="share-overlay" id="shareOverlay">
+        <div class="share-container">
+            <img id="shareImage" class="share-image" alt="Shared artwork">
+            <div class="share-actions">
+                <button class="action-button" onclick="Gallery.shareDownload()">Download Image</button>
+                <button class="action-button secondary" onclick="Gallery.closeShare()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Gallery -->
+    <div class="split-container" id="splitContainer">
+        <!-- Top Half: Artwork Display -->
+        <div class="artwork-half">
+            <div class="frame-container" id="frameContainer">
+                <div class="art-frame" id="artFrame">
+                    <div class="frame-inner">
+                        <img src="" 
+                             alt="" 
+                             class="art-image" 
+                             id="mainImage"
+                             crossorigin="anonymous"
+                             loading="eager"
+                             decoding="async">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Half: Poem Area -->
+        <div class="poem-half" id="poemHalf">
+            <div class="poem-container" id="poemContainer">
+                <pre class="poem" id="poemText">A hem to hound
+A thread to ground
+In silence found
+A sacred sound
+
+Through noise and strife
+This thread of life
+Cuts like a knife
+Through earthly strife</pre>
+                
+                <!-- Title & Author with Icons -->
+                <div class="title-author" id="titleAuthor">
+                    <div class="title-author-text">
+                        <span id="artTitle">The Hem to Hound</span>
+                        <span class="separator" aria-hidden="true">—</span>
+                        <span id="artAuthor">V.</span>
+                    </div>
+                    <div class="title-author-icons">
+                        <button class="icon-button heart" id="heartButton" aria-label="Save artwork">
+                            ♡
+                        </button>
+                        <button class="icon-button info" id="infoButton" aria-label="Acquisition information">
+                            ⓘ
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Storytelling Acquisition Modal -->
+        <div class="modal-overlay" id="acquisitionModal" onclick="Gallery.closeAcquisitionModal()">
+            <div class="acquisition-modal" onclick="event.stopPropagation()">
+                <div class="modal-header">
+                    <button class="close-modal" onclick="Gallery.closeAcquisitionModal()" aria-label="Close">
+                        ×
+                    </button>
+                    <h3 class="modal-title">Acquisition</h3>
+                </div>
+                
+                <!-- Storytelling Sections -->
+                <div class="story-section artwork-context" id="artworkContext">
+                    <h4>The Artwork</h4>
+                    <p>"<span id="storyArtworkTitle">The Hem to Hound</span>" by V.</p>
+                    <p id="storyArtworkMaterials">Archival pigment print on Hahnemühle Photo Rag 308gsm</p>
+                    <p>Year: <span id="storyArtworkYear">2024</span> • <span id="storyArtworkEdition">Edition 2/10</span></p>
+                </div>
+                
+                <div class="story-section collector-journey">
+                    <h4>The Collector's Journey</h4>
+                    
+                    <!-- Side by Side Options -->
+                    <div class="journey-options">
+                        <!-- Original Work -->
+                        <div class="journey-option original-work selected" id="originalWorkOption" onclick="Gallery.selectEdition()">
+                            <h5>The Original Work</h5>
+                            <div class="option-subtitle">
+                                <span id="editionInfo">Edition 2/10</span><br>
+                                <strong id="editionPrice">$8,500</strong>
+                            </div>
+                            <ul class="benefits-list" id="editionBenefits">
+                                <!-- Dynamic content -->
+                            </ul>
+                        </div>
+                        
+                        <!-- Artist's Print -->
+                        <div class="journey-option artists-print" id="artistsPrintOption" onclick="Gallery.selectPrint()">
+                            <h5>The Artist's Print</h5>
+                            <div class="option-subtitle">
+                                Archival Print<br>
+                                From <strong id="printFromPrice">$120</strong>
+                            </div>
+                            <ul class="benefits-list" id="printBenefits">
+                                <!-- Dynamic content -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Schedule Viewing (Edition only) -->
+                <div class="schedule-option" id="scheduleOption">
+                    <div class="schedule-row" onclick="Gallery.toggleScheduleViewing()">
+                        <input type="checkbox" id="scheduleCheckbox">
+                        <div>
+                            <div class="schedule-label">Schedule in-person viewing</div>
+                            <div class="schedule-details">Arrange a private viewing at the gallery or your location</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Viewing details (shown when checked) -->
+                    <div class="form-group" id="viewingDetails" style="display: none; margin-top: 15px;">
+                        <label class="form-label" for="viewingType">Viewing Preference</label>
+                        <select class="form-input" id="viewingType" name="viewing_type">
+                            <option value="">Select option</option>
+                            <option value="gallery">Gallery Viewing</option>
+                            <option value="virtual">Virtual Viewing</option>
+                            <option value="onsite">On-site Viewing</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Print Options (Hidden by default) -->
+                <div class="print-options" id="printOptions">
+                    <div class="size-options" id="sizeOptions">
+                        <!-- Dynamic content -->
+                    </div>
+                    
+                    <div class="frame-options" id="frameOptions">
+                        <!-- Dynamic content -->
+                    </div>
+                    
+                    <div class="selection-summary" id="selectionSummary">
+                        <div class="summary-title">Your Selection</div>
+                        <div class="summary-item">
+                            <span id="summarySize">Select size</span>
+                            <span id="summarySizePrice">$0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span id="summaryFrame">No Frame</span>
+                            <span id="summaryFramePrice">Included</span>
+                        </div>
+                        <div class="summary-item total">
+                            <span>Total</span>
+                            <span id="summaryTotal">$0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <form class="contact-form" id="acquisitionForm" onsubmit="Gallery.submitAcquisitionForm(event)">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Full Name *</label>
+                        <input type="text" class="form-input" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email Address *</label>
+                        <input type="email" class="form-input" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Phone Number</label>
+                        <input type="tel" class="form-input" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="message">
+                            <span id="messageLabel">Message (Optional)</span>
+                        </label>
+                        <textarea class="form-textarea" id="message" name="message" 
+                                  placeholder="Additional questions or comments..." 
+                                  rows="2"></textarea>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button type="submit" class="action-button" id="submitButton">
+                            Inquire About Edition • $8,500
+                        </button>
+                        <button type="button" class="action-button secondary" onclick="Gallery.closeAcquisitionModal()">
+                            Continue Browsing
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Tools Overlay -->
+        <div class="tools-overlay" id="toolsOverlay" onclick="Gallery.closeTools()">
+            <div class="tools-modal" onclick="event.stopPropagation()">
+                <div class="tools-header">
+                    <button class="close-tools" onclick="Gallery.closeTools()" aria-label="Close">
+                        ×
+                    </button>
+                    <div class="tools-title">Tools & Information</div>
+                </div>
+                <div class="tools-actions">
+                    <button class="tools-action" onclick="Gallery.viewCollection()">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M9 12l2 2 4-4"/>
+                            <path d="M7.2 20.2l-1.4 1.4C4.3 22.4 3 21.1 3 19.2V4c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2v15.2c0 1.9-1.3 3.2-2.8 3.2l-1.4-1.4"/>
+                            <path d="M16 2v16H8V2h8zm-4 6h4m-4 4h4m-4 4h4"/>
+                        </svg>
+                        Your Collection
+                    </button>
+                    <button class="tools-action" onclick="Gallery.viewAdvisor()">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        Contact Advisor
+                    </button>
+                    <button class="tools-action" onclick="Gallery.captureAndShare()">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <circle cx="18" cy="5" r="3"/>
+                            <circle cx="6" cy="12" r="3"/>
+                            <circle cx="18" cy="19" r="3"/>
+                            <path d="M8.59 13.51l6.83 3.98"/>
+                            <path d="M15.41 6.51l-6.82 3.98"/>
+                        </svg>
+                        Share Artwork
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Your Collection View -->
+        <div class="collection-overlay" id="collectionOverlay">
+            <div class="collection-header">
+                <button class="close-collection" onclick="Gallery.closeCollection()" aria-label="Close">
+                    ×
+                </button>
+                <h2 class="collection-title">Your Collection</h2>
+            </div>
+            <div class="collection-grid" id="collectionGrid">
+                <!-- Dynamic content -->
+            </div>
+        </div>
+
+        <!-- Smart Advisor View -->
+        <div class="advisor-overlay" id="advisorOverlay">
+            <div class="advisor-header">
+                <button class="close-advisor" onclick="Gallery.closeAdvisor()" aria-label="Close">
+                    ×
+                </button>
+                <h2 class="advisor-title">Art Advisory</h2>
+            </div>
+            <div class="advisor-content">
+                <!-- Contact -->
+                <div class="advisor-section">
+                    <h3 class="advisor-section-title">Contact</h3>
+                    <div class="contact-details">
+                        <p><strong>V. Gallery Art Advisory</strong></p>
+                        <p>
+                            <a href="mailto:advisor@vgallery.art" class="contact-link">
+                                advisor@vgallery.art
+                            </a>
+                        </p>
+                        <p>
+                            <a href="tel:+15551234567" class="contact-link">
+                                +1 (555) 123-4567
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://calendly.com/vgallery-advisory" 
+                               target="_blank" 
+                               class="contact-link">
+                                By appointment only
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Services (Consolidated) -->
+                <div class="advisor-section">
+                    <h3 class="advisor-section-title">Services</h3>
+                    <ul class="advisor-list">
+                        <li>Collection Strategy & Development</li>
+                        <li>Artist Studio Access & Introductions</li>
+                        <li>Market Intelligence & Investment Guidance</li>
+                        <li>Installation & Curation Consulting</li>
+                        <li>Commission Management</li>
+                        <li>Estate & Legacy Planning</li>
+                    </ul>
+                </div>
+                
+                <!-- Credentials (Specific) -->
+                <div class="advisor-section">
+                    <h3 class="advisor-section-title">Credentials</h3>
+                    <ul class="advisor-list">
+                        <li>Curatorial experience at leading international galleries</li>
+                        <li>Advanced degrees in Art History & Curatorial Studies</li>
+                        <li>Clients represented in major museum collections</li>
+                        <li>Members of international art fair selection committees</li>
+                    </ul>
+                </div>
+                
+                <!-- Approach (Concise) -->
+                <div class="advisor-section">
+                    <h3 class="advisor-section-title">Approach</h3>
+                    <div class="contact-details">
+                        <p>We provide discreet, personalized advisory for collectors seeking to build meaningful collections with both artistic integrity and investment intelligence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Commission View -->
+        <div class="commission-overlay" id="commissionOverlay">
+            <div class="commission-header">
+                <button class="close-commission" onclick="Gallery.closeCommission()" aria-label="Close">
+                    ×
+                </button>
+                <h2 class="commission-title">Commission</h2>
+            </div>
+            <div class="commission-content">
+                <div class="commission-intro">
+                    <p><strong>Create a unique artwork</strong> for your space, or work directly with the artist on a custom piece.</p>
+                    <p>Commissioned works include personal consultation, concept development, and exclusive access to the creative process.</p>
+                </div>
+                <form class="contact-form" id="commissionForm" onsubmit="Gallery.submitCommissionForm(event)">
+                    <div class="form-group">
+                        <label class="form-label" for="commissionName">Full Name *</label>
+                        <input type="text" class="form-input" id="commissionName" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="commissionEmail">Email Address *</label>
+                        <input type="email" class="form-input" id="commissionEmail" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="commissionPhone">Phone Number</label>
+                        <input type="tel" class="form-input" id="commissionPhone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="commissionType">Project Type *</label>
+                        <select class="form-input" id="commissionType" name="type" required>
+                            <option value="">Select type</option>
+                            <option value="custom_poem">Custom Poem + Artwork</option>
+                            <option value="portrait">Portrait-Based Work</option>
+                            <option value="abstract">Abstract Composition</option>
+                            <option value="large_scale">Large-Scale Installation</option>
+                            <option value="corporate">Corporate Commission</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="commissionConcept">Concept & Inspiration *</label>
+                        <textarea class="form-textarea" id="commissionConcept" name="concept" 
+                                  placeholder="Describe your vision, story, or inspiration..." 
+                                  rows="4" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="commissionBudget">Budget Range *</label>
+                        <select class="form-input" id="commissionBudget" name="budget" required>
+                            <option value="">Select range</option>
+                            <option value="5000-10000">$5,000 - $10,000</option>
+                            <option value="10000-25000">$10,000 - $25,000</option>
+                            <option value="25000-50000">$25,000 - $50,000</option>
+                            <option value="50000+">$50,000+</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="commissionTimeline">Timeline</label>
+                        <select class="form-input" id="commissionTimeline" name="timeline">
+                            <option value="">Flexible</option>
+                            <option value="1-3">1-3 months</option>
+                            <option value="3-6">3-6 months</option>
+                            <option value="6-12">6-12 months</option>
+                        </select>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button type="submit" class="action-button">
+                            Submit Commission Request
+                        </button>
+                        <button type="button" class="action-button secondary" onclick="Gallery.closeCommission()">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Notification -->
+        <div class="notification" id="notification"></div>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav" id="bottomNav">
+            <div class="nav-content">
+                <!-- Left side: Commission & Tools -->
+                <div class="nav-left">
+                    <button class="nav-link commission" onclick="Gallery.openCommission()">
+                        Commission
+                    </button>
+                    <button class="nav-link tools" onclick="Gallery.openTools()">
+                        •••
+                    </button>
+                </div>
+                
+                <!-- Right side: Navigation arrows with indicator -->
+                <div class="nav-right">
+                    <div class="nav-arrows">
+                        <button class="arrow-btn prev-artwork" onclick="Gallery.prevArtwork()" disabled>
+                            ‹
+                        </button>
+                        <div class="page-indicator" id="pageIndicator">1/8</div>
+                        <button class="arrow-btn next-artwork" onclick="Gallery.nextArtwork()">
+                            ›
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Data - 8 Artworks Total -->
+    <script id="artworks-data" type="application/json">
+    [
+        {
+            "id": 1,
+            "title": "The Hem to Hound",
+            "author": "V.",
+            "poem": "A hem to hound\nA thread to ground\nIn silence found\nA sacred sound\n\nThrough noise and strife\nThis thread of life\nCuts like a knife\nThrough earthly strife",
+            "image": "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=800&auto=format&fit=crop",
+            "year": "2024",
+            "edition": "Edition 2/10",
+            "limitedEdition": {
+                "price": 8500,
+                "details": "Includes museum framing, certificate of authenticity, and installation consultation."
+            },
+            "prints": {
+                "small": { "dimensions": "12 × 16 inches", "price": 120 },
+                "medium": { "dimensions": "18 × 24 inches", "price": 195 },
+                "large": { "dimensions": "24 × 36 inches", "price": 280 }
+            },
+            "materials": "Archival pigment print on Hahnemühle Photo Rag 308gsm",
+            "provenance": "Direct from artist studio",
+            "orientation": "portrait",
+            "editionBenefits": [
+                "Museum framing included",
+                "Certificate of authenticity",
+                "Installation consultation",
+                "Direct from artist studio",
+                "Personalized documentation"
+            ],
+            "printBenefits": [
+                "Archival quality reproduction",
+                "Customizable size & framing",
+                "Multiple size options",
+                "Includes artist statement",
+                "Ready to display"
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Shadow Sword",
+            "author": "V.",
+            "poem": "In kneeling form\nThrough shadow storm\nA blade is born\nTo keep me warm\n\nNot steel but light\nIn darkest night\nMy hidden might\nMy constant fight",
+            "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800&h=600&auto=format&fit=crop",
+            "year": "2023",
+            "edition": "Edition 3/10",
+            "limitedEdition": {
+                "price": 9200,
+                "details": "Includes museum framing, certificate of authenticity, and installation consultation."
+            },
+            "prints": {
+                "small": { "dimensions": "12 × 16 inches", "price": 120 },
+                "medium": { "dimensions": "18 × 24 inches", "price": 195 },
+                "large": { "dimensions": "24 × 36 inches", "price": 280 }
+            },
+            "materials": "Archival pigment print on Hahnemühle Photo Rag 308gsm",
+            "provenance": "Direct from artist studio",
+            "orientation": "landscape",
+            "editionBenefits": [
+                "Museum framing included",
+                "Certificate of authenticity",
+                "Installation consultation",
+                "Direct from artist studio",
+                "Personalized documentation"
+            ],
+            "printBenefits": [
+                "Archival quality reproduction",
+                "Customizable size & framing",
+                "Multiple size options",
+                "Includes artist statement",
+                "Ready to display"
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Echo Chamber",
+            "author": "V.",
+            "poem": "Walls that speak\nIn voices weak\nThe truth they seek\nThrough silence sleek\n\nAn echo's dance\nA fleeting glance\nIn this expanse\nWe take our chance",
+            "image": "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=600&h=800&auto=format&fit=crop",
+            "year": "2024",
+            "edition": "Edition 1/10",
+            "limitedEdition": {
+                "price": 7800,
+                "details": "Reserved • Waitlist available"
+            },
+            "prints": {
+                "small": { "dimensions": "12 × 16 inches", "price": 120 },
+                "medium": { "dimensions": "18 × 24 inches", "price": 195 },
+                "large": { "dimensions": "24 × 36 inches", "price": 280 }
+            },
+            "materials": "Archival pigment print on Hahnemühle Photo Rag 308gsm",
+            "provenance": "Direct from artist studio",
+            "orientation": "square",
+            "editionBenefits": [
+                "Museum framing included",
+                "Certificate of authenticity",
+                "Installation consultation",
+                "Direct from artist studio",
+                "Personalized documentation"
+            ],
+            "printBenefits": [
+                "Archival quality reproduction",
+                "Customizable size & framing",
+                "Multiple size options",
+                "Includes artist statement",
+                "Ready to display"
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Silent Currents",
+            "author": "V.",
+            "poem": "Beneath the surface deep\nWhere quiet waters keep\nTheir promises to sleep\nIn darkness, soft and steep\n\nA current moves unseen\nIn spaces washed clean\nOf what might have been\nIn the in-between",
+            "image": "https://i.etsystatic.com/39493791/r/il/61517f/4673069647/il_600x600.4673069647_bh5y.jpg",
+            "year": "2024",
+            "edition": "Edition 4/10",
+            "limitedEdition": {
+                "price": 8900,
+                "details": "Includes museum framing, certificate of authenticity, and installation consultation."
+            },
+            "prints": {
+                "small": { "dimensions": "12 × 16 inches", "price": 120 },
+                "medium": { "dimensions": "18 × 24 inches", "price": 195 },
+                "large": { "dimensions": "24 × 36 inches", "price": 280 }
+            },
+            "materials": "Archival pigment print on Hahnemühle Photo Rag 308gsm",
+            "provenance": "Direct from artist studio",
+            "orientation": "landscape",
+            "editionBenefits": [
+                "Museum framing included",
+                "Certificate of authenticity",
+                "Installation consultation",
+                "Direct from artist studio",
+                "Personalized documentation"
+            ],
+            "printBenefits": [
+                "Archival quality reproduction",
+                "Customizable size & framing",
+                "Multiple size options",
+                "Includes artist statement",
+                "Ready to display"
+            ]
+        },
+        {
+            "id": 5,
+            "title": "Paper Memory",
+            "author": "V.",
+            "poem": "Folded time in careful crease\nA fragile, papered peace\nThat asks for its release\nFrom moments that won't cease\n\nEach fold a whispered year\nHolding close what's dear\nIn paper, pressed and clear\nA memory held near",
+            "image": "https://i0.wp.com/macramemakersclub.s3.amazonaws.com/uploads/2023/04/14142254/Daisy-macrame-flower-keychain-5.jpg?w=1900&ssl=1",
+            "year": "2023",
+            "edition": "Edition 2/8",
+            "limitedEdition": {
+                "price": 10500,
+                "details": "Includes museum framing, certificate of authenticity, and installation consultation."
+            },
+            "prints": {
+                "small": { "dimensions": "12 × 16 inches", "price": 120 },
+                "medium": { "dimensions": "18 × 24 inches", "price": 195 },
+                "large": { "dimensions": "24 × 36 inches", "price": 280 }
+            },
+            "materials": "Archival pigment print on Hahnemühle Photo Rag 308gsm",
+            "provenance": "Direct from artist studio",
+            "orientation": "portrait",
+            "editionBenefits": [
+                "Museum framing included",
+                "Certificate of authenticity",
+                "Installation consultation",
+                "Direct from artist studio",
+                "Personalized documentation"
+            ],
+            "printBenefits": [
+                "Archival quality reproduction",
+                "Customizable size & framing",
+                "Multiple size options",
+                "Includes artist statement",
+                "Ready to display"
+            ]
+        },
+        {
+            "id": 6,
+            "title": "Urban Breath",
+            "author": "V.",
+            "poem": "Between the steel and glass\nWhere concrete masses pass\nA quiet breath amass\nIn shadows on the grass\n\nThe city holds its breath\nIn spaces carved from death\nOf industry's great breadth\nAnd manufactured depth",
+            "image": "https://i0.wp.com/macramemakersclub.s3.amazonaws.com/uploads/2023/04/14142254/Daisy-macrame-flower-keychain-5.jpg?w=1900&ssl=1",
+            "year": "2024",
+            "edition": "Edition 5/12",
+            "limitedEdition": {
+                "price": 8200,
+                "details": "Includes museum framing, certificate of authenticity, and installation consultation."
+            },
+            "prints": {
+                "small": { "dimensions": "12 × 16 inches", "price": 120 },
+                "medium": { "dimensions": "18 × 24 inches", "price": 195 },
+                "large": { "dimensions": "24 × 36 inches", "price": 280 }
+            },
+            "materials": "Archival pigment print on Hahnemühle Photo Rag 308gsm",
+            "provenance": "Direct from artist studio",
+            "orientation": "landscape",
+            "editionBenefits": [
+                "Museum framing included",
+                "Certificate of authenticity",
+                "Installation consultation",
+                "Direct from artist studio",
+                "Personalized documentation"
+            ],
+            "printBenefits": [
+                "Archival quality reproduction",
+                "Customizable size & framing",
+                "Multiple size options",
+                "Includes artist statement",
+                "Ready to display"
+            ]
+        },
+        {
+            "id": 7,
+            "title": "Veil of Hours",
+            "author": "V.",
+            "poem": "Time wears a fragile veil\nThrough which our stories sail\nOn winds that never fail\nTo tell their ancient tale\n\nEach hour, thin and worn\nFrom moments being born\nAnd others being torn\nFrom what we have outworn",
+            "image": "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&h-800&auto=format&fit=crop",
+            "year": "2024",
+            "edition": "Edition 3/10",
+            "limitedEdition": {
+                "price": 9500,
+                "details": "Includes museum framing, certificate of authenticity, and installation consultation."
+            },
+            "prints": {
+                "small": { "dimensions": "12 × 16 inches", "price": 120 },
+                "medium": { "dimensions": "18 × 24 inches", "price": 195 },
+                "large": { "dimensions": "24 × 36 inches", "price": 280 }
+            },
+            "materials": "Archival pigment print on Hahnemühle Photo Rag 308gsm",
+            "provenance": "Direct from artist studio",
+            "orientation": "portrait",
+            "editionBenefits": [
+                "Museum framing included",
+                "Certificate of authenticity",
+                "Installation consultation",
+                "Direct from artist studio",
+                "Personalized documentation"
+            ],
+            "printBenefits": [
+                "Archival quality reproduction",
+                "Customizable size & framing",
+                "Multiple size options",
+                "Includes artist statement",
+                "Ready to display"
+            ]
+        },
+        {
+            "id": 8,
+            "title": "Night Garden",
+            "author": "V.",
+            "poem": "In darkness, flowers grow\nWith colors that don't show\nTo any light we know\nIn rhythms, soft and slow\n\nA garden made of night\nWhere petals hold the light\nOf stars, both dim and bright\nIn shadows, out of sight",
+            "image": "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=800&h=600&auto=format&fit=crop",
+            "year": "2023",
+            "edition": "Edition 1/8",
+            "limitedEdition": {
+                "price": 11000,
+                "details": "Reserved • Waitlist available"
+            },
+            "prints": {
+                "small": { "dimensions": "12 × 16 inches", "price": 120 },
+                "medium": { "dimensions": "18 × 24 inches", "price": 195 },
+                "large": { "dimensions": "24 × 36 inches", "price": 280 }
+            },
+            "materials": "Archival pigment print on Hahnemühle Photo Rag 308gsm",
+            "provenance": "Direct from artist studio",
+            "orientation": "landscape",
+            "editionBenefits": [
+                "Museum framing included",
+                "Certificate of authenticity",
+                "Installation consultation",
+                "Direct from artist studio",
+                "Personalized documentation"
+            ],
+            "printBenefits": [
+                "Archival quality reproduction",
+                "Customizable size & framing",
+                "Multiple size options",
+                "Includes artist statement",
+                "Ready to display"
+            ]
+        }
+    ]
+    </script>
+
+    <script>
+        // ===== GALLERY APPLICATION =====
+        const Gallery = (() => {
+            // State
+            let currentIndex = 0;
+            let artworks = [];
+            let savedArtworks = new Set();
+            let selectedOption = 'edition'; // 'edition' or 'print'
+            let selectedSize = 'medium'; // 'small', 'medium', 'large'
+            let selectedFrame = 'none'; // 'none', 'black', 'walnut', 'museum'
+            let scheduleViewing = false;
+            let countdownInterval = null;
+            let hasVisitedIntro = localStorage.getItem('vgallery_intro_viewed') === 'true';
+            
+            // DOM Elements
+            const elements = {
+                introOverlay: document.getElementById('introOverlay'),
+                splitContainer: document.getElementById('splitContainer'),
+                mainImage: document.getElementById('mainImage'),
+                poemText: document.getElementById('poemText'),
+                artTitle: document.getElementById('artTitle'),
+                artAuthor: document.getElementById('artAuthor'),
+                heartButton: document.getElementById('heartButton'),
+                infoButton: document.getElementById('infoButton'),
+                pageIndicator: document.getElementById('pageIndicator'),
+                frameContainer: document.getElementById('frameContainer'),
+                
+                // Modals & Overlays
+                acquisitionModal: document.getElementById('acquisitionModal'),
+                toolsOverlay: document.getElementById('toolsOverlay'),
+                collectionOverlay: document.getElementById('collectionOverlay'),
+                advisorOverlay: document.getElementById('advisorOverlay'),
+                commissionOverlay: document.getElementById('commissionOverlay'),
+                shareOverlay: document.getElementById('shareOverlay'),
+                successOverlay: document.getElementById('successOverlay'),
+                loading: document.getElementById('loading'),
+                notification: document.getElementById('notification'),
+                srAnnounce: document.getElementById('sr-announce'),
+                
+                // Collection grid
+                collectionGrid: document.getElementById('collectionGrid'),
+                
+                // Share
+                shareImage: document.getElementById('shareImage')
+            };
+            
+            // Initialize
+            function init() {
+                loadData();
+                loadSavedWorks();
+                
+                if (!hasVisitedIntro) {
+                    showIntroduction();
+                } else {
+                    enterGallery();
+                }
+                
+                setupEventListeners();
+            }
+            
+            function loadData() {
+                artworks = JSON.parse(document.getElementById('artworks-data').textContent);
+            }
+            
+            function loadSavedWorks() {
+                const saved = localStorage.getItem('vgallery_saved');
+                if (saved) {
+                    savedArtworks = new Set(JSON.parse(saved));
+                }
+            }
+            
+            function saveSavedWorks() {
+                localStorage.setItem('vgallery_saved', JSON.stringify([...savedArtworks]));
+            }
+            
+            // Introduction
+            function showIntroduction() {
+                elements.introOverlay.classList.remove('hidden');
+                elements.splitContainer.classList.remove('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function enterGallery() {
+                localStorage.setItem('vgallery_intro_viewed', 'true');
+                elements.introOverlay.classList.add('hidden');
+                
+                setTimeout(() => {
+                    elements.splitContainer.classList.add('active');
+                    updateArtworkDisplay();
+                    document.body.style.overflow = '';
+                    announce('Gallery view opened');
+                }, 300);
+            }
+            
+            // Artwork Display with Fixed Frame Sizing
+            function updateArtworkDisplay() {
+                const artwork = artworks[currentIndex];
+                
+                // Update image
+                elements.mainImage.src = artwork.image;
+                elements.mainImage.alt = artwork.title;
+                elements.mainImage.onload = () => {
+                    elements.mainImage.classList.add('loaded');
+                    adjustLayoutForOrientation(artwork.orientation);
+                };
+                
+                // Update text
+                elements.poemText.textContent = artwork.poem;
+                elements.artTitle.textContent = artwork.title;
+                elements.artAuthor.textContent = artwork.author;
+                
+                // Update heart
+                updateHeartState();
+                
+                // Update indicators
+                updateNavigation();
+                
+                // Update acquisition modal content
+                updateAcquisitionModal(artwork);
+                
+                // Announce for accessibility
+                announce(`Now viewing: ${artwork.title} by ${artwork.author}`);
+            }
+            
+            // FIXED: Actually implement frame sizing
+            function adjustLayoutForOrientation(orientation) {
+                const frameContainer = elements.frameContainer;
+                
+                // Reset styles
+                frameContainer.style.maxWidth = '';
+                frameContainer.style.maxHeight = '';
+                frameContainer.style.padding = '';
+                
+                // Apply Code 2's proven sizing logic
+                switch(orientation) {
+                    case 'portrait':
+                        frameContainer.style.maxWidth = 'min(400px, 90vh)';
+                        frameContainer.style.maxHeight = 'min(500px, 90vh)';
+                        frameContainer.style.padding = 'clamp(20px, 5vh, 40px) clamp(30px, 8vh, 60px)';
+                        break;
+                    case 'landscape':
+                        frameContainer.style.maxWidth = 'min(500px, 90vh)';
+                        frameContainer.style.maxHeight = 'min(400px, 90vh)';
+                        frameContainer.style.padding = 'clamp(30px, 8vh, 60px) clamp(20px, 5vh, 40px)';
+                        break;
+                    case 'square':
+                        frameContainer.style.maxWidth = 'min(450px, 90vh)';
+                        frameContainer.style.maxHeight = 'min(450px, 90vh)';
+                        frameContainer.style.padding = 'clamp(25px, 6vh, 50px)';
+                        break;
+                }
+            }
+            
+            function updateHeartState() {
+                const artwork = artworks[currentIndex];
+                const isSaved = savedArtworks.has(artwork.id);
+                
+                elements.heartButton.classList.toggle('saved', isSaved);
+                elements.heartButton.setAttribute('aria-label', isSaved ? 'Unsave artwork' : 'Save artwork');
+                elements.heartButton.innerHTML = isSaved ? '♥' : '♡';
+            }
+            
+            function updateNavigation() {
+                const total = artworks.length;
+                const current = currentIndex + 1;
+                
+                elements.pageIndicator.textContent = `${current}/${total}`;
+                
+                document.querySelector('.prev-artwork').disabled = currentIndex === 0;
+                document.querySelector('.next-artwork').disabled = currentIndex === total - 1;
+            }
+            
+            // Navigation
+            function nextArtwork() {
+                if (currentIndex < artworks.length - 1) {
+                    currentIndex++;
+                    updateArtworkDisplay();
+                }
+            }
+            
+            function prevArtwork() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateArtworkDisplay();
+                }
+            }
+            
+            // Save functionality
+            function toggleSave() {
+                const artwork = artworks[currentIndex];
+                
+                if (savedArtworks.has(artwork.id)) {
+                    savedArtworks.delete(artwork.id);
+                    showNotification('Removed from your collection');
+                } else {
+                    savedArtworks.add(artwork.id);
+                    showNotification('Added to your collection');
+                    
+                    // Animation
+                    elements.heartButton.style.transform = 'scale(1.2)';
+                    setTimeout(() => {
+                        elements.heartButton.style.transform = 'scale(1)';
+                    }, 200);
+                }
+                
+                updateHeartState();
+                saveSavedWorks();
+            }
+            
+            // ===== STORYTELLING ACQUISITION MODAL =====
+            function openAcquisitionModal() {
+                elements.acquisitionModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                announce('Acquisition information opened');
+            }
+            
+            function closeAcquisitionModal() {
+                elements.acquisitionModal.classList.remove('active');
+                document.body.style.overflow = '';
+                announce('Acquisition information closed');
+                
+                // Reset to edition view
+                selectEdition();
+                scheduleViewing = false;
+                document.getElementById('scheduleCheckbox').checked = false;
+                document.getElementById('viewingDetails').style.display = 'none';
+            }
+            
+            function updateAcquisitionModal(artwork) {
+                // Update artwork context
+                document.getElementById('storyArtworkTitle').textContent = artwork.title;
+                document.getElementById('storyArtworkMaterials').textContent = artwork.materials;
+                document.getElementById('storyArtworkYear').textContent = artwork.year;
+                document.getElementById('storyArtworkEdition').textContent = artwork.edition;
+                
+                // Update edition info
+                document.getElementById('editionInfo').textContent = artwork.edition;
+                document.getElementById('editionPrice').textContent = `$${artwork.limitedEdition.price.toLocaleString()}`;
+                document.getElementById('printFromPrice').textContent = `$${artwork.prints.small.price}`;
+                
+                // Update benefits lists
+                document.getElementById('editionBenefits').innerHTML = artwork.editionBenefits
+                    .map(benefit => `<li>${benefit}</li>`).join('');
+                
+                document.getElementById('printBenefits').innerHTML = artwork.printBenefits
+                    .map(benefit => `<li>${benefit}</li>`).join('');
+                
+                // Update print options
+                updatePrintOptions(artwork);
+                
+                // Reset form
+                document.getElementById('acquisitionForm').reset();
+                
+                // Reset selection state
+                selectedOption = 'edition';
+                selectedSize = 'medium';
+                selectedFrame = 'none';
+                scheduleViewing = false;
+                
+                // Update UI
+                updateOptionSelection();
+                updateSubmitButton(artwork);
+                
+                // Hide schedule viewing for print option
+                document.getElementById('scheduleOption').classList.remove('active');
+            }
+            
+            function updatePrintOptions(artwork) {
+                const sizeOptions = document.getElementById('sizeOptions');
+                const frameOptions = document.getElementById('frameOptions');
+                
+                // Frame prices
+                const framePrices = {
+                    'none': 0,
+                    'black': 85,
+                    'walnut': 95,
+                    'museum': 195
+                };
+                
+                // Size options
+                sizeOptions.innerHTML = Object.entries(artwork.prints).map(([size, data]) => `
+                    <div class="size-row ${size === selectedSize ? 'selected' : ''}" onclick="Gallery.selectPrintSize('${size}')">
+                        <div class="size-dimensions">${data.dimensions}</div>
+                        <div class="size-price">$${data.price}</div>
+                    </div>
+                `).join('');
+                
+                // Frame options
+                frameOptions.innerHTML = `
+                    <div class="frame-row ${selectedFrame === 'none' ? 'selected' : ''}" onclick="Gallery.selectPrintFrame('none')">
+                        <div class="frame-name">No Frame</div>
+                        <div class="frame-price"><span class="included">Included</span></div>
+                    </div>
+                    <div class="frame-row ${selectedFrame === 'black' ? 'selected' : ''}" onclick="Gallery.selectPrintFrame('black')">
+                        <div class="frame-name">Black Frame</div>
+                        <div class="frame-price">+$${framePrices.black}</div>
+                    </div>
+                    <div class="frame-row ${selectedFrame === 'walnut' ? 'selected' : ''}" onclick="Gallery.selectPrintFrame('walnut')">
+                        <div class="frame-name">Walnut Frame</div>
+                        <div class="frame-price">+$${framePrices.walnut}</div>
+                    </div>
+                    <div class="frame-row ${selectedFrame === 'museum' ? 'selected' : ''}" onclick="Gallery.selectPrintFrame('museum')">
+                        <div class="frame-name">Museum Frame</div>
+                        <div class="frame-price">+$${framePrices.museum}</div>
+                    </div>
+                `;
+                
+                // Update selection summary
+                updateSelectionSummary(artwork);
+            }
+            
+            function updateSelectionSummary(artwork) {
+                if (selectedOption === 'edition') return;
+                
+                const printData = artwork.prints[selectedSize];
+                const framePrices = {
+                    'none': 0,
+                    'black': 85,
+                    'walnut': 95,
+                    'museum': 195
+                };
+                const framePrice = framePrices[selectedFrame];
+                const frameName = selectedFrame === 'none' ? 'No Frame' :
+                                selectedFrame === 'black' ? 'Black Frame' :
+                                selectedFrame === 'walnut' ? 'Walnut Frame' : 'Museum Frame';
+                
+                document.getElementById('summarySize').textContent = printData.dimensions;
+                document.getElementById('summarySizePrice').textContent = `$${printData.price}`;
+                document.getElementById('summaryFrame').textContent = frameName;
+                document.getElementById('summaryFramePrice').textContent = framePrice === 0 ? 'Included' : `+$${framePrice}`;
+                document.getElementById('summaryTotal').textContent = `$${printData.price + framePrice}`;
+            }
+            
+            function updateSubmitButton(artwork) {
+                const submitButton = document.getElementById('submitButton');
+                if (selectedOption === 'edition') {
+                    submitButton.textContent = `Inquire About Edition • $${artwork.limitedEdition.price.toLocaleString()}`;
+                    document.getElementById('messageLabel').textContent = 'Message (Optional)';
+                } else {
+                    const total = artwork.prints[selectedSize].price + 
+                                (selectedFrame === 'none' ? 0 : 
+                                 selectedFrame === 'black' ? 85 :
+                                 selectedFrame === 'walnut' ? 95 : 195);
+                    submitButton.textContent = `Request Print • $${total}`;
+                    document.getElementById('messageLabel').textContent = 'Shipping preferences or special requests (Optional)';
+                }
+            }
+            
+            function selectEdition() {
+                selectedOption = 'edition';
+                
+                // Update UI
+                updateOptionSelection();
+                
+                // Show schedule viewing option
+                document.getElementById('scheduleOption').classList.add('active');
+                
+                // Hide print options
+                document.getElementById('printOptions').classList.remove('active');
+                document.getElementById('selectionSummary').classList.remove('active');
+                
+                // Update submit button
+                updateSubmitButton(artworks[currentIndex]);
+            }
+            
+            function selectPrint() {
+                selectedOption = 'print';
+                
+                // Update UI
+                updateOptionSelection();
+                
+                // Hide schedule viewing option
+                document.getElementById('scheduleOption').classList.remove('active');
+                document.getElementById('viewingDetails').style.display = 'none';
+                scheduleViewing = false;
+                document.getElementById('scheduleCheckbox').checked = false;
+                
+                // Show print options
+                document.getElementById('printOptions').classList.add('active');
+                document.getElementById('selectionSummary').classList.add('active');
+                
+                // Update submit button
+                updateSubmitButton(artworks[currentIndex]);
+            }
+            
+            function updateOptionSelection() {
+                const originalWork = document.getElementById('originalWorkOption');
+                const artistsPrint = document.getElementById('artistsPrintOption');
+                
+                originalWork.classList.toggle('selected', selectedOption === 'edition');
+                artistsPrint.classList.toggle('selected', selectedOption === 'print');
+            }
+            
+            function toggleScheduleViewing() {
+                scheduleViewing = !scheduleViewing;
+                document.getElementById('viewingDetails').style.display = 
+                    scheduleViewing ? 'block' : 'none';
+            }
+            
+            function selectPrintSize(size) {
+                selectedSize = size;
+                
+                // Update UI
+                document.querySelectorAll('.size-row').forEach(row => {
+                    row.classList.remove('selected');
+                });
+                
+                const selectedRow = document.querySelector(`.size-row[onclick*="${size}"]`);
+                if (selectedRow) {
+                    selectedRow.classList.add('selected');
+                }
+                
+                // Update summary and submit button
+                updateSelectionSummary(artworks[currentIndex]);
+                updateSubmitButton(artworks[currentIndex]);
+            }
+            
+            function selectPrintFrame(frame) {
+                selectedFrame = frame;
+                
+                // Update UI
+                document.querySelectorAll('.frame-row').forEach(row => {
+                    row.classList.remove('selected');
+                });
+                
+                const selectedRow = document.querySelector(`.frame-row[onclick*="${frame}"]`);
+                if (selectedRow) {
+                    selectedRow.classList.add('selected');
+                }
+                
+                // Update summary and submit button
+                updateSelectionSummary(artworks[currentIndex]);
+                updateSubmitButton(artworks[currentIndex]);
+            }
+            
+            async function submitAcquisitionForm(event) {
+                event.preventDefault();
+                setLoading(true);
+                
+                try {
+                    const artwork = artworks[currentIndex];
+                    const formData = {
+                        artworkId: artwork.id,
+                        artworkTitle: artwork.title,
+                        option: selectedOption,
+                        size: selectedOption === 'print' ? selectedSize : null,
+                        frame: selectedOption === 'print' ? selectedFrame : null,
+                        scheduleViewing: selectedOption === 'edition' ? scheduleViewing : false,
+                        viewingType: scheduleViewing ? document.getElementById('viewingType').value : null,
+                        name: document.getElementById('name').value,
+                        email: document.getElementById('email').value,
+                        phone: document.getElementById('phone').value,
+                        message: document.getElementById('message').value
+                    };
+                    
+                    // Simulate API call
+                    await new Promise(resolve => setTimeout(resolve, 800));
+                    
+                    closeAcquisitionModal();
+                    showSuccess(
+                        'Inquiry Submitted',
+                        `Thank you for your interest in "${artwork.title}". We will contact you within 24 hours to discuss acquisition details.`,
+                        'acquisition'
+                    );
+                    
+                } catch (error) {
+                    showNotification('Failed to submit inquiry. Please try again.', 'error');
+                } finally {
+                    setLoading(false);
+                }
+            }
+            
+            // ===== TOOLS & MENU =====
+            function openTools() {
+                elements.toolsOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                announce('Tools menu opened');
+            }
+            
+            function closeTools() {
+                elements.toolsOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+                announce('Tools menu closed');
+            }
+            
+            function viewCollection() {
+                closeTools();
+                elements.collectionOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                loadCollectionGrid();
+                announce('Your collection view opened');
+            }
+            
+            function closeCollection() {
+                elements.collectionOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+                announce('Your collection view closed');
+            }
+            
+            function loadCollectionGrid() {
+                const savedArtworkList = artworks.filter(art => savedArtworks.has(art.id));
+                
+                if (savedArtworkList.length === 0) {
+                    elements.collectionGrid.innerHTML = `
+                        <div class="empty-collection">
+                            <div class="empty-collection-title">Your Collection is Empty</div>
+                            <div class="empty-collection-message">
+                                Save artworks you love to build your personal collection.
+                            </div>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                elements.collectionGrid.innerHTML = savedArtworkList.map(artwork => `
+                    <div class="collection-item" onclick="Gallery.viewArtworkFromCollection(${artwork.id})">
+                        <img src="${artwork.image}" 
+                             alt="${artwork.title}" 
+                             class="collection-image"
+                             crossorigin="anonymous"
+                             loading="lazy"
+                             onload="this.classList.add('loaded')">
+                    </div>
+                `).join('');
+            }
+            
+            function viewArtworkFromCollection(artworkId) {
+                const index = artworks.findIndex(art => art.id === artworkId);
+                if (index !== -1) {
+                    currentIndex = index;
+                    closeCollection();
+                    setTimeout(() => {
+                        updateArtworkDisplay();
+                    }, 300);
+                }
+            }
+            
+            function viewAdvisor() {
+                closeTools();
+                elements.advisorOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                announce('Art advisory services');
+            }
+            
+            function closeAdvisor() {
+                elements.advisorOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // ===== COMMISSION =====
+            function openCommission() {
+                elements.commissionOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                announce('Commission view opened');
+            }
+            
+            function closeCommission() {
+                elements.commissionOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+                announce('Commission view closed');
+            }
+            
+            async function submitCommissionForm(event) {
+                event.preventDefault();
+                setLoading(true);
+                
+                try {
+                    const formData = {
+                        name: document.getElementById('commissionName').value,
+                        email: document.getElementById('commissionEmail').value,
+                        phone: document.getElementById('commissionPhone').value,
+                        type: document.getElementById('commissionType').value,
+                        concept: document.getElementById('commissionConcept').value,
+                        budget: document.getElementById('commissionBudget').value,
+                        timeline: document.getElementById('commissionTimeline').value
+                    };
+                    
+                    // Simulate API call
+                    await new Promise(resolve => setTimeout(resolve, 800));
+                    
+                    closeCommission();
+                    showSuccess(
+                        'Commission Requested',
+                        'Thank you for your commission inquiry. We will review your request and contact you within 48 hours to discuss the creative process.',
+                        'commission'
+                    );
+                    
+                } catch (error) {
+                    showNotification('Failed to submit commission request. Please try again.', 'error');
+                } finally {
+                    setLoading(false);
+                }
+            }
+            
+            // ===== SHARE FUNCTIONALITY =====
+            async function captureAndShare() {
+                closeTools();
+                setLoading(true);
+                
+                try {
+                    // Store original nav content
+                    const originalNav = document.querySelector('.nav-content').innerHTML;
+                    
+                    // Replace nav content with share version
+                    document.querySelector('.nav-content').innerHTML = `
+                        <div style="width: 100%; text-align: center; font-size: 11px; color: var(--color-gray); font-family: 'Work Sans', sans-serif;">
+                            visit vgallery.art to explore
+                        </div>
+                    `;
+                    
+                    // Capture the entire split-container
+                    const container = document.querySelector('.split-container');
+                    
+                    const canvas = await html2canvas(container, {
+                        backgroundColor: '#ffffff',
+                        scale: 2,
+                        useCORS: true,
+                        logging: false
+                    });
+                    
+                    // Restore original nav
+                    document.querySelector('.nav-content').innerHTML = originalNav;
+                    
+                    // Convert to data URL
+                    const dataUrl = canvas.toDataURL('image/png');
+                    
+                    // Show share overlay
+                    elements.shareImage.src = dataUrl;
+                    elements.shareOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    
+                } catch (error) {
+                    console.error('Capture error:', error);
+                    showNotification('Failed to capture image. Please try again.', 'error');
+                } finally {
+                    setLoading(false);
+                }
+            }
+            
+            function shareDownload() {
+                const artwork = artworks[currentIndex];
+                const link = document.createElement('a');
+                link.download = `V-Gallery-${artwork.title.replace(/\s+/g, '-')}.png`;
+                link.href = elements.shareImage.src;
+                link.click();
+            }
+            
+            function closeShare() {
+                elements.shareOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // ===== SUCCESS OVERLAY =====
+            function showSuccess(title, message, type) {
+                document.getElementById('successTitle').textContent = title;
+                document.getElementById('successMessage').textContent = message;
+                elements.successOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                // Start countdown
+                let seconds = 5;
+                document.getElementById('countdownNumber').textContent = seconds;
+                
+                countdownInterval = setInterval(() => {
+                    seconds--;
+                    document.getElementById('countdownNumber').textContent = seconds;
+                    
+                    if (seconds <= 0) {
+                        clearInterval(countdownInterval);
+                        returnToGallery();
+                    }
+                }, 1000);
+            }
+            
+            function returnToGallery() {
+                clearInterval(countdownInterval);
+                elements.successOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // ===== UI HELPERS =====
+            function showNotification(message, type = 'success') {
+                elements.notification.textContent = message;
+                elements.notification.className = 'notification';
+                if (type === 'error') {
+                    elements.notification.style.backgroundColor = '#8b4513';
+                }
+                elements.notification.classList.add('active');
+                
+                announce(message, 'assertive');
+                
+                setTimeout(() => {
+                    elements.notification.classList.remove('active');
+                }, 4000);
+            }
+            
+            function announce(message, priority = 'polite') {
+                elements.srAnnounce.textContent = message;
+                elements.srAnnounce.setAttribute('aria-live', priority);
+                
+                setTimeout(() => {
+                    elements.srAnnounce.textContent = '';
+                }, 1000);
+            }
+            
+            function setLoading(isLoading) {
+                if (isLoading) {
+                    elements.loading.classList.add('active');
+                } else {
+                    elements.loading.classList.remove('active');
+                }
+            }
+            
+            // ===== EVENT LISTENERS =====
+            function setupEventListeners() {
+                // Heart button
+                elements.heartButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleSave();
+                });
+                
+                // Info button
+                elements.infoButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    openAcquisitionModal();
+                });
+                
+                // Image click to open acquisition modal
+                elements.mainImage.addEventListener('click', () => {
+                    openAcquisitionModal();
+                });
+                
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        if (elements.acquisitionModal.classList.contains('active')) closeAcquisitionModal();
+                        if (elements.toolsOverlay.classList.contains('active')) closeTools();
+                        if (elements.collectionOverlay.classList.contains('active')) closeCollection();
+                        if (elements.advisorOverlay.classList.contains('active')) closeAdvisor();
+                        if (elements.commissionOverlay.classList.contains('active')) closeCommission();
+                        if (elements.shareOverlay.classList.contains('active')) closeShare();
+                        if (elements.successOverlay.classList.contains('active')) returnToGallery();
+                    }
+                    
+                    // Arrow keys when no modal is open
+                    if (!isModalOpen()) {
+                        if (e.key === 'ArrowRight' || e.key === ' ') nextArtwork();
+                        if (e.key === 'ArrowLeft') prevArtwork();
+                        if (e.key === 's' || e.key === 'S') toggleSave();
+                        if (e.key === 'i' || e.key === 'I') openAcquisitionModal();
+                        if (e.key === 'c' || e.key === 'C') openCommission();
+                    }
+                });
+                
+                // Touch gestures
+                let touchStartX = 0;
+                
+                document.addEventListener('touchstart', (e) => {
+                    touchStartX = e.touches[0].clientX;
+                });
+                
+                document.addEventListener('touchend', (e) => {
+                    if (isModalOpen()) return;
+                    
+                    const touchEndX = e.changedTouches[0].clientX;
+                    const diffX = touchStartX - touchEndX;
+                    
+                    if (Math.abs(diffX) > 50) {
+                        if (diffX > 0) nextArtwork();
+                        else prevArtwork();
+                    }
+                });
+            }
+            
+            function isModalOpen() {
+                return elements.acquisitionModal.classList.contains('active') ||
+                       elements.toolsOverlay.classList.contains('active') ||
+                       elements.collectionOverlay.classList.contains('active') ||
+                       elements.advisorOverlay.classList.contains('active') ||
+                       elements.commissionOverlay.classList.contains('active') ||
+                       elements.shareOverlay.classList.contains('active') ||
+                       elements.successOverlay.classList.contains('active');
+            }
+            
+            // Public API
+            return {
+                init,
+                enterGallery,
+                nextArtwork,
+                prevArtwork,
+                toggleSave,
+                openAcquisitionModal,
+                closeAcquisitionModal,
+                selectEdition,
+                selectPrint,
+                toggleScheduleViewing,
+                selectPrintSize,
+                selectPrintFrame,
+                submitAcquisitionForm,
+                openCommission,
+                closeCommission,
+                submitCommissionForm,
+                openTools,
+                closeTools,
+                viewCollection,
+                closeCollection,
+                viewArtworkFromCollection,
+                viewAdvisor,
+                closeAdvisor,
+                captureAndShare,
+                shareDownload,
+                closeShare,
+                showSuccess,
+                returnToGallery
+            };
+        })();
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => Gallery.init());
+    </script>
+</body>
+</html>
