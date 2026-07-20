@@ -34,7 +34,6 @@
     
     .container { max-width: 960px; margin: 0 auto; }
     
-    /* Header */
     .header {
       display: flex;
       align-items: center;
@@ -82,13 +81,11 @@
     
     .btn:hover { border-color: var(--gold); }
     .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-    
     .btn-primary { background: var(--gold); color: #fff; border-color: var(--gold); }
     .btn-primary:hover { background: var(--gold-dark); }
     .btn-sm { padding: 5px 10px; font-size: 10px; }
     .btn-xs { padding: 3px 8px; font-size: 9px; }
     
-    /* Summary */
     .summary-row {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -122,7 +119,6 @@
     .value.red { color: var(--red); }
     .value.gold { color: var(--gold); }
     
-    /* Section */
     .section-title {
       font-family: 'DM Sans', sans-serif;
       font-size: 11px;
@@ -134,20 +130,9 @@
       border-bottom: 1px solid var(--border);
     }
     
-    .section-title span {
-      font-weight: 300;
-      opacity: 0.5;
-    }
+    .section-title span { font-weight: 300; opacity: 0.5; }
+    .section-note { font-size: 10px; color: var(--soft); opacity: 0.5; margin-bottom: 12px; font-style: italic; }
     
-    .section-note {
-      font-size: 10px;
-      color: var(--soft);
-      opacity: 0.5;
-      margin-bottom: 12px;
-      font-style: italic;
-    }
-    
-    /* Room Card */
     .room-grid { display: grid; gap: 10px; margin-bottom: 16px; }
     
     .room-card {
@@ -178,22 +163,11 @@
       gap: 8px;
     }
     
-    .room-num {
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--soft);
-      font-weight: 400;
-    }
-    
-    .room-price {
-      font-size: 10px;
-      color: var(--soft);
-    }
+    .room-num { font-size: 9px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--soft); font-weight: 400; }
+    .room-price { font-size: 10px; color: var(--soft); }
     
     .dot {
-      width: 7px;
-      height: 7px;
+      width: 7px; height: 7px;
       border-radius: 50%;
       display: inline-block;
       flex-shrink: 0;
@@ -203,13 +177,7 @@
     .dot.red { background: var(--red); }
     .dot.orange { background: var(--orange); }
     
-    /* Config buttons for flexible rooms */
-    .config-row {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
-    }
+    .config-row { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
     
     .config-btn {
       padding: 5px 10px;
@@ -225,19 +193,9 @@
     
     .config-btn:hover { border-color: var(--gold); }
     .config-btn.active { background: var(--text); color: #fff; border-color: var(--text); }
+    .config-detail { font-size: 10px; color: var(--soft); margin-bottom: 8px; }
     
-    .config-detail {
-      font-size: 10px;
-      color: var(--soft);
-      margin-bottom: 8px;
-    }
-    
-    /* Date pills */
-    .date-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-    }
+    .date-pills { display: flex; flex-wrap: wrap; gap: 5px; }
     
     .date-pill {
       font-size: 10px;
@@ -263,15 +221,8 @@
     }
     
     .date-pill .remove:hover { opacity: 1; color: var(--red); }
+    .no-dates { font-size: 10px; color: var(--soft); opacity: 0.45; font-style: italic; }
     
-    .no-dates {
-      font-size: 10px;
-      color: var(--soft);
-      opacity: 0.45;
-      font-style: italic;
-    }
-    
-    /* Add form */
     .add-row {
       display: flex;
       gap: 6px;
@@ -282,8 +233,7 @@
       align-items: flex-end;
     }
     
-    .add-row input,
-    .add-row select {
+    .add-row input, .add-row select {
       padding: 5px 8px;
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -293,13 +243,10 @@
       color: var(--text);
     }
     
-    .add-row input:focus,
-    .add-row select:focus { outline: none; border-color: var(--gold); }
-    
+    .add-row input:focus, .add-row select:focus { outline: none; border-color: var(--gold); }
     .add-row input[type="date"] { min-width: 120px; }
     .add-row input[type="text"] { min-width: 110px; }
     
-    /* Status bar */
     .status-bar {
       display: flex;
       align-items: center;
@@ -314,15 +261,13 @@
     }
     
     .status-dot {
-      width: 6px;
-      height: 6px;
+      width: 6px; height: 6px;
       border-radius: 50%;
       background: var(--green);
       display: inline-block;
       margin-right: 6px;
     }
     
-    /* Toast */
     .toast {
       position: fixed;
       bottom: 20px;
@@ -382,7 +327,7 @@
   <div class="room-grid" id="onebedGrid"></div>
 
   <div class="section-title">Two Bedroom Apartments <span>· Flexible</span></div>
-  <div class="section-note">Each can be sold whole (2BR+living · ₦280k), as 1BR+living (₦210k), or split into 2 singles (₦150k each).</div>
+  <div class="section-note">Each can be sold whole (2BR+living · ₦280k), as 1BR+living (₦210k), or split into 2 rooms (larger ₦110k, smaller ₦85k).</div>
   <div class="room-grid" id="twobedGrid"></div>
 
   <div class="status-bar">
@@ -399,46 +344,54 @@
 // ULO ROOM STATUS — Production Dashboard
 // ============================================================
 
-// ---- ROOM DEFINITIONS (matches your physical inventory) ----
+// ---- ROOM DEFINITIONS (matches physical inventory) ----
 var ROOMS = {
-  // Comfort Zone (5 physical, Room 12 is manager's — not listed)
+  // Comfort Zone — 4 sellable (Room 12 is manager's, excluded)
   c4:  { id:'c4',  cat:'comfort', name:'Comfort Zone',      room:'Room 4',  price:85000 },
   c11: { id:'c11', cat:'comfort', name:'Comfort Zone',      room:'Room 11', price:85000 },
   c13: { id:'c13', cat:'comfort', name:'Comfort Zone',      room:'Room 13', price:85000 },
   c15: { id:'c15', cat:'comfort', name:'Comfort Zone',      room:'Room 15', price:85000 },
   
-  // Super Comfort (2)
+  // Super Comfort — 2 sellable
   s5:  { id:'s5',  cat:'super',   name:'Super Comfort',     room:'Room 5',  price:110000 },
   s14: { id:'s14', cat:'super',   name:'Super Comfort',     room:'Room 14', price:110000 },
   
-  // Studio
+  // Studio — 1 sellable
   st6: { id:'st6', cat:'studio',  name:'Studio Sanctuary',  room:'Room 6',  price:150000 },
   
-  // One Bedrooms
+  // One Bedrooms — 3 sellable
   pv:  { id:'pv',  cat:'onebed',  name:'1BR Pool View',     room:'Room 1',  price:230000 },
   bal: { id:'bal', cat:'onebed',  name:'1BR with Balcony',  room:'Room 7',  price:210000 },
   hid: { id:'hid', cat:'onebed',  name:'1BR Hideaway',      room:'Room 10', price:210000 },
   
-  // Two Bedrooms (flexible)
-  tbA: { id:'tbA', cat:'twobed',  name:'Two Bedroom A',     room:'Rooms 2+3', price:280000, flexible:true },
-  tbB: { id:'tbB', cat:'twobed',  name:'Two Bedroom B',     room:'Rooms 8+9', price:280000, flexible:true }
+  // Two Bedrooms — flexible
+  tbA: { id:'tbA', cat:'twobed', name:'Two Bedroom A', room:'Rooms 2+3', price:280000, flexible:true,
+         childA:'tbA_R2', childB:'tbA_R3',
+         splitPriceA:110000, splitPriceB:85000 },
+  tbB: { id:'tbB', cat:'twobed', name:'Two Bedroom B', room:'Rooms 8+9', price:280000, flexible:true,
+         childA:'tbB_R8', childB:'tbB_R9',
+         splitPriceA:110000, splitPriceB:85000 },
+  
+  // Two Bedroom children (used when split)
+  tbA_R2: { id:'tbA_R2', cat:'twobed', parent:'tbA', name:'Room 2 (Super Comfort)', room:'Room 2', price:110000, hidden:true },
+  tbA_R3: { id:'tbA_R3', cat:'twobed', parent:'tbA', name:'Room 3 (Comfort Zone)',  room:'Room 3', price:85000,  hidden:true },
+  tbB_R8: { id:'tbB_R8', cat:'twobed', parent:'tbB', name:'Room 8 (Super Comfort)', room:'Room 8', price:110000, hidden:true },
+  tbB_R9: { id:'tbB_R9', cat:'twobed', parent:'tbB', name:'Room 9 (Comfort Zone)',  room:'Room 9', price:85000,  hidden:true }
 };
 
-// Two-bedroom configuration options
 var CONFIGS = {
-  '2bed':  { label:'2-Bedroom (whole)',  units:1, price:280000, desc:'Both bedrooms + living room' },
-  '1bed':  { label:'1-Bedroom + Living', units:1, price:210000, desc:'One bedroom + living, other locked' },
-  'split': { label:'2 Single Rooms',     units:2, price:150000, desc:'Each room separate, living locked' }
+  '2bed':  { label:'2-Bedroom (whole)',  units:1, price:280000, desc:'Both rooms + living' },
+  '1bed':  { label:'1-Bedroom + Living', units:1, price:210000, desc:'One room + living, other locked' },
+  'split': { label:'Split by Room',      units:2, price:'split', desc:'Room A: ₦110k · Room B: ₦85k' }
 };
 
-// ---- DATA STORE (localStorage) ----
-var STORE_KEY = 'ulo_room_status_v2';
+// ---- DATA STORE ----
+var STORE_KEY = 'ulo_room_status_v3';
 var data = JSON.parse(localStorage.getItem(STORE_KEY) || '{}');
 
 if (!data.booked) {
   data = {
-    booked: {},   // { roomId: [{date:'2026-07-25', guest:'Ray Man'}] }
-    blocked: {},  // { roomId: ['2026-07-26'] }
+    booked: {}, blocked: {},
     config: { tbA:'2bed', tbB:'2bed' },
     lastDeploy: null
   };
@@ -469,15 +422,15 @@ function renderSummary() {
   
   Object.keys(ROOMS).forEach(function(id) {
     var r = ROOMS[id];
+    if (r.hidden) return;
     total += r.flexible ? CONFIGS[data.config[id]||'2bed'].units : 1;
     (data.booked[id]||[]).forEach(function(b) {
       if (b.date === today) bookedToday++;
     });
   });
   
-  var avail = total - bookedToday;
   document.getElementById('summaryRow').innerHTML = `
-    <div class="summary-card"><div class="label">Available Today</div><div class="value green">${avail}</div></div>
+    <div class="summary-card"><div class="label">Available Today</div><div class="value green">${total - bookedToday}</div></div>
     <div class="summary-card"><div class="label">Booked Today</div><div class="value red">${bookedToday}</div></div>
     <div class="summary-card"><div class="label">Total Units</div><div class="value gold">${total}</div></div>
     <div class="summary-card"><div class="label">Last Deploy</div><div class="value" style="font-size:13px;font-family:'Inter',sans-serif;">${data.lastDeploy ? timeAgo(data.lastDeploy) : 'Never'}</div></div>
@@ -522,6 +475,10 @@ function roomCard(id) {
       </div>
       <div class="add-row">
         <input type="date" id="dt-${id}" min="${new Date().toISOString().split('T')[0]}" />
+        <input type="date" id="dt2-${id}" min="${new Date().toISOString().split('T')[0]}" style="display:none;" placeholder="End date" />
+        <label style="font-size:10px;color:var(--soft);display:flex;align-items:center;gap:4px;cursor:pointer;white-space:nowrap;">
+          <input type="checkbox" id="range-${id}" onchange="toggleRange('${id}')" /> Range
+        </label>
         <input type="text" id="gst-${id}" placeholder="Guest name" />
         <select id="tp-${id}"><option value="booked">Booked</option><option value="blocked">Blocked</option></select>
         <button class="btn btn-xs btn-primary" onclick="add('${id}')">+ Add</button>
@@ -538,9 +495,27 @@ function twoBedCard(id) {
   var r = ROOMS[id];
   var cfg = data.config[id] || '2bed';
   var c = CONFIGS[cfg];
+  
+  if (cfg === 'split') {
+    // Show individual child rooms
+    return `
+      <div class="room-card flexible">
+        <div class="room-top">
+          <h3>${r.name} <span class="room-num">${r.room}</span></h3>
+        </div>
+        <div class="config-row">
+          ${Object.keys(CONFIGS).map(function(key) {
+            return '<button class="config-btn'+(cfg===key?' active':'')+'" onclick="setConfig(\''+id+'\',\''+key+'\')">'+CONFIGS[key].label+'</button>';
+          }).join('')}
+        </div>
+        <div class="config-detail">Now: <strong>${c.label}</strong> — ${c.desc}</div>
+        ${splitChildCard(r.childA)}${splitChildCard(r.childB)}
+      </div>`;
+  }
+  
+  // Merged card
   var booked = data.booked[id] || [];
   var blocked = data.blocked[id] || [];
-  
   var all = [];
   booked.forEach(function(b) { all.push({ date:b.date, guest:b.guest, type:'booked' }); });
   blocked.forEach(function(d) { all.push({ date:d, guest:'', type:'blocked' }); });
@@ -555,11 +530,10 @@ function twoBedCard(id) {
       </div>
       <div class="config-row">
         ${Object.keys(CONFIGS).map(function(key) {
-          var o = CONFIGS[key];
-          return '<button class="config-btn'+(cfg===key?' active':'')+'" onclick="setConfig(\''+id+'\',\''+key+'\')">'+o.label+' · ₦'+o.price.toLocaleString()+'</button>';
+          return '<button class="config-btn'+(cfg===key?' active':'')+'" onclick="setConfig(\''+id+'\',\''+key+'\')">'+CONFIGS[key].label+'</button>';
         }).join('')}
       </div>
-      <div class="config-detail">Now: <strong>${c.label}</strong> — ${c.desc} · <strong>${c.units} unit${c.units>1?'s':''}</strong> · <strong>₦${c.price.toLocaleString()}</strong></div>
+      <div class="config-detail">Now: <strong>${c.label}</strong> — ${c.desc} · <strong>₦${typeof c.price==='number' ? c.price.toLocaleString() : '110k/85k'}</strong></div>
       <div class="date-pills">
         ${all.length === 0 ? '<span class="no-dates">All dates available</span>' : ''}
         ${all.map(function(d) {
@@ -574,6 +548,10 @@ function twoBedCard(id) {
       </div>
       <div class="add-row">
         <input type="date" id="dt-${id}" min="${new Date().toISOString().split('T')[0]}" />
+        <input type="date" id="dt2-${id}" min="${new Date().toISOString().split('T')[0]}" style="display:none;" placeholder="End date" />
+        <label style="font-size:10px;color:var(--soft);display:flex;align-items:center;gap:4px;cursor:pointer;white-space:nowrap;">
+          <input type="checkbox" id="range-${id}" onchange="toggleRange('${id}')" /> Range
+        </label>
         <input type="text" id="gst-${id}" placeholder="Guest name" />
         <select id="tp-${id}"><option value="booked">Booked</option><option value="blocked">Blocked</option></select>
         <button class="btn btn-xs btn-primary" onclick="add('${id}')">+ Add</button>
@@ -581,32 +559,111 @@ function twoBedCard(id) {
     </div>`;
 }
 
-// ---- ACTIONS ----
-function add(id) {
-  var d = document.getElementById('dt-'+id).value;
-  var g = document.getElementById('gst-'+id).value.trim();
-  var t = document.getElementById('tp-'+id).value;
-  if (!d) return toast('Pick a date','err');
-  
+function splitChildCard(childId) {
+  var r = ROOMS[childId];
+  if (!r) return '';
+  var booked = data.booked[childId] || [];
+  var blocked = data.blocked[childId] || [];
   var all = [];
-  (data.booked[id]||[]).forEach(function(b) { all.push(b.date); });
-  (data.blocked[id]||[]).forEach(function(b) { all.push(b); });
-  if (all.indexOf(d) !== -1) return toast('Date already set','err');
+  booked.forEach(function(b) { all.push({ date:b.date, guest:b.guest, type:'booked' }); });
+  blocked.forEach(function(d) { all.push({ date:d, guest:'', type:'blocked' }); });
+  all.sort(function(a,b) { return a.date.localeCompare(b.date); });
   
-  if (t === 'blocked') {
-    data.blocked[id].push(d);
-    data.blocked[id].sort();
-  } else {
-    data.booked[id].push({ date:d, guest:g||'Guest' });
-    data.booked[id].sort(function(a,b) { return a.date.localeCompare(b.date); });
-  }
+  var dot = all.length === 0 ? 'green' : (all.length < 3 ? 'orange' : 'red');
   
-  document.getElementById('dt-'+id).value = '';
-  document.getElementById('gst-'+id).value = '';
-  save(); render();
-  toast(ROOMS[id].room + ' · ' + fmtDate(d) + (g?' · '+g:'') + ' · ' + (t==='blocked'?'Blocked':'Booked'), 'ok');
+  return `
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:10px;margin-top:8px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+        <strong style="font-size:12px;"><span class="dot ${dot}" style="width:6px;height:6px;"></span> ${r.name}</strong>
+        <span style="font-size:10px;color:var(--soft);">₦${r.price.toLocaleString()}</span>
+      </div>
+      <div class="date-pills" style="margin-bottom:6px;">
+        ${all.length === 0 ? '<span class="no-dates">All dates available</span>' : ''}
+        ${all.map(function(d) {
+          return '<span class="date-pill '+(d.type==='blocked'?'blocked':'')+'">'+fmtDate(d.date)+(d.guest?' <span class="guest">'+d.guest+'</span>':'')+(d.type==='blocked'?' · blocked':'')+' <span class="remove" onclick="remove(\''+childId+'\',\''+d.date+'\',\''+d.type+'\')">×</span></span>';
+        }).join('')}
+      </div>
+      <div class="add-row" style="border-top:1px solid var(--border);padding-top:6px;margin-top:6px;">
+        <input type="date" id="dt-${childId}" min="${new Date().toISOString().split('T')[0]}" style="padding:4px 6px;font-size:10px;" />
+        <input type="date" id="dt2-${childId}" min="${new Date().toISOString().split('T')[0]}" style="display:none;padding:4px 6px;font-size:10px;" placeholder="End" />
+        <label style="font-size:9px;color:var(--soft);display:flex;align-items:center;gap:3px;cursor:pointer;white-space:nowrap;">
+          <input type="checkbox" id="range-${childId}" onchange="toggleRange('${childId}')" /> Range
+        </label>
+        <input type="text" id="gst-${childId}" placeholder="Guest" style="padding:4px 6px;font-size:10px;width:80px;" />
+        <select id="tp-${childId}" style="padding:4px 6px;font-size:10px;"><option value="booked">Booked</option><option value="blocked">Blocked</option></select>
+        <button class="btn btn-xs btn-primary" onclick="add('${childId}')">+</button>
+      </div>
+    </div>`;
 }
 
+// ---- TOGGLE DATE RANGE ----
+function toggleRange(id) {
+  var checked = document.getElementById('range-'+id).checked;
+  var el = document.getElementById('dt2-'+id);
+  if (el) el.style.display = checked ? 'inline-block' : 'none';
+}
+
+// ---- ADD DATE (single or range) ----
+function add(id) {
+  var d1 = document.getElementById('dt-'+id).value;
+  var rangeEl = document.getElementById('range-'+id);
+  var rangeChecked = rangeEl ? rangeEl.checked : false;
+  var d2el = document.getElementById('dt2-'+id);
+  var d2 = rangeChecked ? (d2el ? d2el.value || d1 : d1) : d1;
+  var g = document.getElementById('gst-'+id).value.trim();
+  var t = document.getElementById('tp-'+id).value;
+  
+  if (!d1) return toast('Pick a date','err');
+  
+  // Generate date range
+  var dates = [];
+  var start = new Date(d1 + 'T00:00:00');
+  var end = new Date(d2 + 'T00:00:00');
+  if (end < start) { var tmp = start; start = end; end = tmp; }
+  var current = new Date(start);
+  while (current <= end) {
+    dates.push(current.toISOString().split('T')[0]);
+    current.setDate(current.getDate() + 1);
+  }
+  
+  // Check for existing
+  var allExisting = [];
+  (data.booked[id]||[]).forEach(function(b) { allExisting.push(b.date); });
+  (data.blocked[id]||[]).forEach(function(b) { allExisting.push(b); });
+  
+  var skipped = [], added = [];
+  dates.forEach(function(date) {
+    if (allExisting.indexOf(date) !== -1) { skipped.push(date); return; }
+    if (t === 'blocked') {
+      data.blocked[id].push(date);
+    } else {
+      data.booked[id].push({ date:date, guest:g||'Guest' });
+    }
+    added.push(date);
+  });
+  
+  if (added.length === 0) return toast('All dates already set','err');
+  
+  data.blocked[id].sort();
+  data.booked[id].sort(function(a,b) { return a.date.localeCompare(b.date); });
+  
+  // Clear inputs
+  document.getElementById('dt-'+id).value = '';
+  if (d2el) d2el.value = '';
+  if (rangeEl) rangeEl.checked = false;
+  if (d2el) d2el.style.display = 'none';
+  document.getElementById('gst-'+id).value = '';
+  
+  save(); render();
+  
+  var msg = ROOMS[id].room + ' · ' + fmtDate(added[0]);
+  if (added.length > 1) msg += ' – ' + fmtDate(added[added.length-1]) + ' (' + added.length + ' nights)';
+  msg += (g?' · '+g:'') + ' · ' + (t==='blocked'?'Blocked':'Booked');
+  if (skipped.length > 0) msg += ' · ' + skipped.length + ' skipped';
+  toast(msg, 'ok');
+}
+
+// ---- REMOVE DATE ----
 function remove(id, date, type) {
   if (!confirm('Remove ' + fmtDate(date) + ' from ' + ROOMS[id].room + '?')) return;
   if (type === 'blocked') {
@@ -619,30 +676,90 @@ function remove(id, date, type) {
   toast('Removed ' + fmtDate(date), 'ok');
 }
 
+// ---- SET TWO BEDROOM CONFIG ----
 function setConfig(id, cfg) {
-  if (!confirm('Change ' + ROOMS[id].name + ' to ' + CONFIGS[cfg].label + '?\n\n' + CONFIGS[cfg].desc + '\nPrice: ₦' + CONFIGS[cfg].price.toLocaleString() + '\nUnits: ' + CONFIGS[cfg].units)) return;
+  var c = CONFIGS[cfg];
+  if (!confirm('Change ' + ROOMS[id].name + ' to ' + c.label + '?\n\n' + c.desc + '\nUnits: ' + c.units)) return;
   data.config[id] = cfg;
+  
+  // Ensure child data exists if splitting
+  if (cfg === 'split') {
+    var r = ROOMS[id];
+    [r.childA, r.childB].forEach(function(childId) {
+      if (childId && !data.booked[childId]) data.booked[childId] = [];
+      if (childId && !data.blocked[childId]) data.blocked[childId] = [];
+    });
+  }
+  
   save(); render();
-  toast(ROOMS[id].name + ' → ' + CONFIGS[cfg].label, 'ok');
+  toast(ROOMS[id].name + ' → ' + c.label, 'ok');
 }
 
 // ---- DEPLOY ----
 function deploy() {
   var btn = document.getElementById('deployBtn');
   var orig = btn.textContent;
-  btn.textContent = 'Building...';
+  btn.textContent = 'Deploying...';
   btn.disabled = true;
   
   var json = buildJSON();
+  localStorage.setItem('roomsJSON_backup', json);
   
-  // Try to write directly to the site if we're on the same domain
-  // For Netlify, this requires a deploy. For now, copy to clipboard.
+  var hook = localStorage.getItem('ulo_deploy_hook');
+  
+  if (hook) {
+    fetch(hook, { method: 'POST' })
+      .then(function(r) {
+        if (r.ok) {
+          data.lastDeploy = new Date().toISOString();
+          save(); updateStatus();
+          toast('✅ Deployed! Site updating in ~30s', 'ok');
+        } else {
+          throw new Error('Hook failed');
+        }
+      })
+      .catch(function() {
+        fallbackDeploy(json);
+      })
+      .finally(function() {
+        btn.textContent = orig;
+        btn.disabled = false;
+      });
+  } else {
+    // First time: ask for hook
+    if (!localStorage.getItem('ulo_setup_done')) {
+      setupDeployHook(json, btn, orig);
+    } else {
+      fallbackDeploy(json);
+      btn.textContent = orig;
+      btn.disabled = false;
+    }
+  }
+}
+
+function setupDeployHook(json, btn, orig) {
+  var setup = confirm('🚀 One-time auto-deploy setup?\n\nClick OK to paste your Netlify Build Hook URL.\nClick Cancel for manual deploy.');
+  if (setup) {
+    var hook = prompt('Paste your Netlify Build Hook URL:\n\nGet it from: Netlify → Site Settings → Build & Deploy → Build Hooks\n\nURL looks like: https://api.netlify.com/build_hooks/abc123...');
+    if (hook) {
+      localStorage.setItem('ulo_deploy_hook', hook);
+      localStorage.setItem('ulo_setup_done', 'true');
+      toast('✅ Auto-deploy configured! Click Deploy again.', 'ok');
+    }
+  } else {
+    localStorage.setItem('ulo_setup_done', 'true');
+    fallbackDeploy(json);
+  }
+  btn.textContent = orig;
+  btn.disabled = false;
+}
+
+function fallbackDeploy(json) {
   navigator.clipboard.writeText(json).then(function() {
     data.lastDeploy = new Date().toISOString();
     save(); updateStatus();
-    toast('✅ rooms.json copied! Upload to your site root.','ok');
+    toast('📋 rooms.json copied — upload to site root', 'ok');
   }).catch(function() {
-    // Fallback: download
     var blob = new Blob([json], { type:'application/json' });
     var a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
@@ -650,11 +767,8 @@ function deploy() {
     a.click();
     data.lastDeploy = new Date().toISOString();
     save(); updateStatus();
-    toast('📥 Downloaded rooms.json — upload to site root','err');
+    toast('📥 Downloaded — upload to site root', 'err');
   });
-  
-  btn.textContent = orig;
-  btn.disabled = false;
 }
 
 function copyJSON() {
@@ -674,19 +788,26 @@ function buildJSON() {
   
   Object.keys(ROOMS).forEach(function(id) {
     var r = ROOMS[id];
+    if (r.hidden) return;
     var cat = cats[r.cat];
     if (!cat) return;
     
     var units = r.flexible ? CONFIGS[data.config[id]||'2bed'].units : 1;
-    var price = r.flexible ? CONFIGS[data.config[id]||'2bed'].price : r.price;
     cat.total += units;
-    cat.price = price; // Last one wins for display
     
-    (data.booked[id]||[]).forEach(function(b) { cat.booked.push(b.date); });
-    (data.blocked[id]||[]).forEach(function(d) { cat.blocked.push(d); });
+    var targetId = id;
+    if (r.flexible && data.config[id] === 'split') {
+      // Use child bookings
+      if (r.childA) (data.booked[r.childA]||[]).forEach(function(b) { cat.booked.push(b.date); });
+      if (r.childB) (data.booked[r.childB]||[]).forEach(function(b) { cat.booked.push(b.date); });
+      if (r.childA) (data.blocked[r.childA]||[]).forEach(function(d) { cat.blocked.push(d); });
+      if (r.childB) (data.blocked[r.childB]||[]).forEach(function(d) { cat.blocked.push(d); });
+    } else {
+      (data.booked[id]||[]).forEach(function(b) { cat.booked.push(b.date); });
+      (data.blocked[id]||[]).forEach(function(d) { cat.blocked.push(d); });
+    }
   });
   
-  // Deduplicate
   var out = { _generated: new Date().toISOString(), _hotel:'Ulõ Aparthotel', categories:{} };
   Object.keys(cats).forEach(function(key) {
     var c = cats[key];
