@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ulõ · Front Desk</title>
+  <title>Ulõ · Room Status</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #f8f5ef;
@@ -18,9 +18,8 @@
       --green: #7c9a7e;
       --red: #c88b8b;
       --orange: #d4a373;
-      --shadow: 0 1px 3px rgba(0,0,0,0.04);
-      --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
       --radius: 6px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
     
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -33,177 +32,163 @@
       padding: 20px;
     }
     
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
+    .container { max-width: 960px; margin: 0 auto; }
     
     /* Header */
     .header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 20px 0;
+      padding: 16px 0;
       border-bottom: 1px solid var(--border);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 10px;
     }
     
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    .logo-area { display: flex; align-items: center; gap: 10px; }
     
     .logo-text {
       font-family: 'DM Serif Display', serif;
       font-style: italic;
-      font-size: 24px;
-      color: var(--text);
+      font-size: 22px;
     }
     
     .badge {
-      font-size: 10px;
+      font-size: 9px;
       text-transform: uppercase;
       letter-spacing: 0.15em;
       color: var(--soft);
       background: var(--card);
-      padding: 4px 10px;
+      padding: 3px 8px;
       border: 1px solid var(--border);
       border-radius: 20px;
     }
     
-    .header-actions {
-      display: flex;
-      gap: 8px;
-    }
-    
-    /* Buttons */
     .btn {
-      padding: 8px 16px;
+      padding: 8px 14px;
       border: 1px solid var(--border);
       background: var(--card);
       color: var(--text);
       font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       cursor: pointer;
       border-radius: var(--radius);
-      transition: all 0.2s ease;
+      transition: all 0.2s;
       white-space: nowrap;
     }
     
-    .btn:hover {
-      border-color: var(--gold);
-    }
+    .btn:hover { border-color: var(--gold); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
     
-    .btn-primary {
-      background: var(--gold);
-      color: #fff;
-      border-color: var(--gold);
-    }
+    .btn-primary { background: var(--gold); color: #fff; border-color: var(--gold); }
+    .btn-primary:hover { background: var(--gold-dark); }
+    .btn-sm { padding: 5px 10px; font-size: 10px; }
+    .btn-xs { padding: 3px 8px; font-size: 9px; }
     
-    .btn-primary:hover {
-      background: var(--gold-dark);
-    }
-    
-    .btn-sm {
-      padding: 4px 10px;
-      font-size: 10px;
-    }
-    
-    .btn-icon {
-      width: 32px;
-      height: 32px;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-    }
-    
-    /* Summary Cards */
+    /* Summary */
     .summary-row {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 12px;
-      margin-bottom: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+      margin-bottom: 20px;
     }
     
     .summary-card {
       background: var(--card);
       border: 1px solid var(--border);
-      padding: 16px;
+      padding: 14px;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
     
     .summary-card .label {
-      font-size: 10px;
+      font-size: 9px;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: var(--soft);
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
     
     .summary-card .value {
       font-family: 'DM Serif Display', serif;
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 400;
     }
     
-    .summary-card .value.available { color: var(--green); }
-    .summary-card .value.booked { color: var(--red); }
-    .summary-card .value.pending { color: var(--orange); }
+    .value.green { color: var(--green); }
+    .value.red { color: var(--red); }
+    .value.gold { color: var(--gold); }
     
-    /* Room Cards */
+    /* Section */
     .section-title {
       font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       color: var(--soft);
-      margin-bottom: 12px;
+      margin: 20px 0 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
     }
     
-    .room-grid {
-      display: grid;
-      gap: 12px;
-      margin-bottom: 24px;
+    .section-title span {
+      font-weight: 300;
+      opacity: 0.5;
     }
+    
+    .section-note {
+      font-size: 10px;
+      color: var(--soft);
+      opacity: 0.5;
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+    
+    /* Room Card */
+    .room-grid { display: grid; gap: 10px; margin-bottom: 16px; }
     
     .room-card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 16px;
+      padding: 14px;
       box-shadow: var(--shadow);
     }
     
-    .room-card-header {
+    .room-card.flexible { border-left: 3px solid var(--gold); }
+    
+    .room-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+      gap: 6px;
     }
     
-    .room-card-header h3 {
+    .room-top h3 {
       font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
+      font-size: 13px;
       font-weight: 500;
-    }
-    
-    .room-stats {
-      display: flex;
-      gap: 16px;
-      font-size: 11px;
-      color: var(--soft);
-    }
-    
-    .room-stats span {
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 8px;
+    }
+    
+    .room-num {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--soft);
+      font-weight: 400;
+    }
+    
+    .room-price {
+      font-size: 10px;
+      color: var(--soft);
     }
     
     .dot {
@@ -211,122 +196,121 @@
       height: 7px;
       border-radius: 50%;
       display: inline-block;
+      flex-shrink: 0;
     }
     
     .dot.green { background: var(--green); }
     .dot.red { background: var(--red); }
     .dot.orange { background: var(--orange); }
     
-    /* Date Pills */
+    /* Config buttons for flexible rooms */
+    .config-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    
+    .config-btn {
+      padding: 5px 10px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    
+    .config-btn:hover { border-color: var(--gold); }
+    .config-btn.active { background: var(--text); color: #fff; border-color: var(--text); }
+    
+    .config-detail {
+      font-size: 10px;
+      color: var(--soft);
+      margin-bottom: 8px;
+    }
+    
+    /* Date pills */
     .date-pills {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
+      gap: 5px;
     }
     
     .date-pill {
       font-size: 10px;
-      padding: 4px 10px;
+      padding: 3px 9px;
       border-radius: 20px;
       border: 1px solid var(--border);
       background: var(--bg);
-      color: var(--text);
-      cursor: pointer;
+      cursor: default;
       display: flex;
       align-items: center;
-      gap: 6px;
-      transition: all 0.15s ease;
+      gap: 5px;
     }
     
-    .date-pill:hover {
-      border-color: var(--red);
-      background: #fdf2f2;
-    }
+    .date-pill .guest { font-weight: 500; }
+    .date-pill.blocked { border-color: var(--orange); background: #fef9f3; }
     
     .date-pill .remove {
-      font-size: 14px;
-      line-height: 1;
-      opacity: 0.4;
+      font-size: 13px;
       cursor: pointer;
+      opacity: 0.3;
+      font-weight: 500;
+      line-height: 1;
     }
     
-    .date-pill .remove:hover {
-      opacity: 1;
-      color: var(--red);
-    }
+    .date-pill .remove:hover { opacity: 1; color: var(--red); }
     
     .no-dates {
-      font-size: 11px;
+      font-size: 10px;
       color: var(--soft);
+      opacity: 0.45;
       font-style: italic;
-      opacity: 0.6;
     }
     
-    /* Add Booking Form */
-    .add-form {
+    /* Add form */
+    .add-row {
       display: flex;
-      gap: 8px;
-      margin-top: 10px;
+      gap: 6px;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
       flex-wrap: wrap;
       align-items: flex-end;
     }
     
-    .add-form input,
-    .add-form select {
-      padding: 6px 10px;
+    .add-row input,
+    .add-row select {
+      padding: 5px 8px;
       border: 1px solid var(--border);
       border-radius: var(--radius);
       font-family: 'Inter', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       background: var(--bg);
       color: var(--text);
     }
     
-    .add-form input:focus,
-    .add-form select:focus {
-      outline: none;
-      border-color: var(--gold);
-    }
+    .add-row input:focus,
+    .add-row select:focus { outline: none; border-color: var(--gold); }
     
-    .add-form input[type="date"] {
-      min-width: 130px;
-    }
+    .add-row input[type="date"] { min-width: 120px; }
+    .add-row input[type="text"] { min-width: 110px; }
     
-    /* Toast */
-    .toast {
-      position: fixed;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--text);
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 20px;
-      font-size: 12px;
-      letter-spacing: 0.05em;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: 1000;
-      pointer-events: none;
-    }
-    
-    .toast.show {
-      opacity: 1;
-    }
-    
-    .toast.success { background: var(--green); }
-    .toast.error { background: var(--red); }
-    
-    /* Deploy Status */
+    /* Status bar */
     .status-bar {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 11px;
+      justify-content: space-between;
+      font-size: 10px;
       color: var(--soft);
-      padding: 10px 0;
+      padding: 12px 0;
       border-top: 1px solid var(--border);
-      margin-top: 20px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+      gap: 8px;
     }
     
     .status-dot {
@@ -334,397 +318,421 @@
       height: 6px;
       border-radius: 50%;
       background: var(--green);
+      display: inline-block;
+      margin-right: 6px;
     }
     
-    /* Login (simple PIN) */
-    .login-overlay {
+    /* Toast */
+    .toast {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: var(--bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 999;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--text);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 20px;
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 1000;
+      pointer-events: none;
     }
     
-    .login-overlay.hidden {
-      display: none;
-    }
+    .toast.show { opacity: 1; }
+    .toast.ok { background: var(--green); }
+    .toast.err { background: var(--red); }
     
-    .login-box {
-      text-align: center;
-      padding: 40px;
-    }
-    
-    .login-box h1 {
-      font-family: 'DM Serif Display', serif;
-      font-style: italic;
-      font-size: 32px;
-      margin-bottom: 4px;
-    }
-    
-    .login-box p {
-      color: var(--soft);
-      font-size: 13px;
-      margin-bottom: 20px;
-    }
-    
-    .login-box input {
-      padding: 10px 16px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      font-size: 18px;
-      text-align: center;
-      letter-spacing: 0.3em;
-      width: 160px;
-      background: var(--card);
-    }
-    
-    .login-box input:focus {
-      outline: none;
-      border-color: var(--gold);
+    @media (max-width: 600px) {
+      body { padding: 10px; }
+      .summary-row { grid-template-columns: repeat(2, 1fr); }
+      .add-row { flex-direction: column; }
+      .add-row input, .add-row select { width: 100%; min-width: auto; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Simple PIN Login -->
-  <div class="login-overlay" id="loginOverlay">
-    <div class="login-box">
-      <h1>Ulõ</h1>
-      <p>Front Desk</p>
-      <input type="password" id="pinInput" placeholder="····" maxlength="4" autofocus />
+<div class="container" id="app">
+
+  <div class="header">
+    <div class="logo-area">
+      <span class="logo-text">Ulõ</span>
+      <span class="badge">Room Status</span>
+    </div>
+    <div style="display:flex;gap:6px;">
+      <button class="btn btn-sm" onclick="copyJSON()">📋 Copy JSON</button>
+      <button class="btn btn-sm btn-primary" id="deployBtn" onclick="deploy()">📤 Deploy</button>
     </div>
   </div>
 
-  <div class="container" id="app" style="display:none;">
-    
-    <!-- Header -->
-    <div class="header">
-      <div class="logo-area">
-        <span class="logo-text">Ulõ</span>
-        <span class="badge">Front Desk</span>
-      </div>
-      <div class="header-actions">
-        <button class="btn" onclick="exportJSON()">📋 Copy JSON</button>
-        <button class="btn btn-primary" onclick="deployNow()">📤 Deploy to Website</button>
-      </div>
-    </div>
-    
-    <!-- Summary -->
-    <div class="summary-row" id="summaryRow"></div>
-    
-    <!-- Rooms -->
-    <div class="section-title">Room Availability</div>
-    <div class="room-grid" id="roomGrid"></div>
-    
-    <!-- Status -->
-    <div class="status-bar">
-      <span class="status-dot"></span>
-      <span id="lastDeploy">Ready</span>
-    </div>
+  <div class="summary-row" id="summaryRow"></div>
+
+  <div class="section-title">Comfort Zone <span>· 4 rooms · ₦85,000</span></div>
+  <div class="room-grid" id="comfortGrid"></div>
+
+  <div class="section-title">Super Comfort Zone <span>· 2 rooms · ₦110,000</span></div>
+  <div class="room-grid" id="superGrid"></div>
+
+  <div class="section-title">Studio Sanctuary <span>· 1 room · ₦150,000</span></div>
+  <div class="room-grid" id="studioGrid"></div>
+
+  <div class="section-title">One Bedroom Apartments</div>
+  <div class="room-grid" id="onebedGrid"></div>
+
+  <div class="section-title">Two Bedroom Apartments <span>· Flexible</span></div>
+  <div class="section-note">Each can be sold whole (2BR+living · ₦280k), as 1BR+living (₦210k), or split into 2 singles (₦150k each).</div>
+  <div class="room-grid" id="twobedGrid"></div>
+
+  <div class="status-bar">
+    <span><span class="status-dot"></span><span id="deployStatus">Ready</span></span>
+    <span>Sellable today: <strong id="totalSellable">—</strong> units</span>
   </div>
 
-  <!-- Toast -->
-  <div class="toast" id="toast"></div>
+</div>
 
-  <script>
-    // ============================================================
-    // ULO FRONT DESK - Self-contained admin panel
-    // ============================================================
-    
-    var PIN = '2025'; // Change this to your own 4-digit PIN
-    var ROOMS = {
-      comfort:  { name: 'Comfort Zone',             total: 3, price: 85000 },
-      super:    { name: 'Super Comfort',             total: 2, price: 110000 },
-      studio:   { name: 'Studio Room',               total: 2, price: 150000 },
-      oneroom:  { name: 'One Bedroom Apartment',     total: 1, price: 210000 },
-      poolview: { name: 'One Bedroom Pool View',     total: 1, price: 230000 },
-      twobed:   { name: 'Two Bedroom Apartment',     total: 2, price: 280000 }
-    };
-    
-    // Load data from localStorage (survives refreshes)
-    var data = JSON.parse(localStorage.getItem('uloData') || '{}');
-    
-    if (!data.bookings) {
-      data = {
-        bookings: {},  // { roomId: ['2026-07-25', '2026-07-26'] }
-        blocked: {},   // { roomId: ['2026-12-25'] }
-        lastDeploy: null
-      };
-      
-      // Initialize empty arrays for each room
-      Object.keys(ROOMS).forEach(function(id) {
-        data.bookings[id] = [];
-        data.blocked[id] = [];
-      });
-      
-      saveData();
-    }
-    
-    function saveData() {
-      localStorage.setItem('uloData', JSON.stringify(data));
-    }
-    
-    // ============================================================
-    // LOGIN
-    // ============================================================
-    var loginOverlay = document.getElementById('loginOverlay');
-    var pinInput = document.getElementById('pinInput');
-    var app = document.getElementById('app');
-    
-    pinInput.addEventListener('input', function() {
-      if (this.value.length === 4) {
-        if (this.value === PIN) {
-          loginOverlay.classList.add('hidden');
-          app.style.display = 'block';
-          renderAll();
-          toast('Welcome back ✨', 'success');
-        } else {
-          this.value = '';
-          this.classList.add('error');
-          setTimeout(() => this.classList.remove('error'), 400);
-        }
-      }
+<div class="toast" id="toast"></div>
+
+<script>
+// ============================================================
+// ULO ROOM STATUS — Production Dashboard
+// ============================================================
+
+// ---- ROOM DEFINITIONS (matches your physical inventory) ----
+var ROOMS = {
+  // Comfort Zone (5 physical, Room 12 is manager's — not listed)
+  c4:  { id:'c4',  cat:'comfort', name:'Comfort Zone',      room:'Room 4',  price:85000 },
+  c11: { id:'c11', cat:'comfort', name:'Comfort Zone',      room:'Room 11', price:85000 },
+  c13: { id:'c13', cat:'comfort', name:'Comfort Zone',      room:'Room 13', price:85000 },
+  c15: { id:'c15', cat:'comfort', name:'Comfort Zone',      room:'Room 15', price:85000 },
+  
+  // Super Comfort (2)
+  s5:  { id:'s5',  cat:'super',   name:'Super Comfort',     room:'Room 5',  price:110000 },
+  s14: { id:'s14', cat:'super',   name:'Super Comfort',     room:'Room 14', price:110000 },
+  
+  // Studio
+  st6: { id:'st6', cat:'studio',  name:'Studio Sanctuary',  room:'Room 6',  price:150000 },
+  
+  // One Bedrooms
+  pv:  { id:'pv',  cat:'onebed',  name:'1BR Pool View',     room:'Room 1',  price:230000 },
+  bal: { id:'bal', cat:'onebed',  name:'1BR with Balcony',  room:'Room 7',  price:210000 },
+  hid: { id:'hid', cat:'onebed',  name:'1BR Hideaway',      room:'Room 10', price:210000 },
+  
+  // Two Bedrooms (flexible)
+  tbA: { id:'tbA', cat:'twobed',  name:'Two Bedroom A',     room:'Rooms 2+3', price:280000, flexible:true },
+  tbB: { id:'tbB', cat:'twobed',  name:'Two Bedroom B',     room:'Rooms 8+9', price:280000, flexible:true }
+};
+
+// Two-bedroom configuration options
+var CONFIGS = {
+  '2bed':  { label:'2-Bedroom (whole)',  units:1, price:280000, desc:'Both bedrooms + living room' },
+  '1bed':  { label:'1-Bedroom + Living', units:1, price:210000, desc:'One bedroom + living, other locked' },
+  'split': { label:'2 Single Rooms',     units:2, price:150000, desc:'Each room separate, living locked' }
+};
+
+// ---- DATA STORE (localStorage) ----
+var STORE_KEY = 'ulo_room_status_v2';
+var data = JSON.parse(localStorage.getItem(STORE_KEY) || '{}');
+
+if (!data.booked) {
+  data = {
+    booked: {},   // { roomId: [{date:'2026-07-25', guest:'Ray Man'}] }
+    blocked: {},  // { roomId: ['2026-07-26'] }
+    config: { tbA:'2bed', tbB:'2bed' },
+    lastDeploy: null
+  };
+  Object.keys(ROOMS).forEach(function(id) {
+    data.booked[id] = [];
+    data.blocked[id] = [];
+  });
+  save();
+}
+
+function save() { localStorage.setItem(STORE_KEY, JSON.stringify(data)); }
+
+// ---- RENDER ALL ----
+function render() {
+  renderSummary();
+  renderGrid('comfortGrid', ['c4','c11','c13','c15']);
+  renderGrid('superGrid',   ['s5','s14']);
+  renderGrid('studioGrid',  ['st6']);
+  renderGrid('onebedGrid',  ['pv','bal','hid']);
+  renderTwoBedGrid();
+  updateStatus();
+}
+
+// ---- SUMMARY ----
+function renderSummary() {
+  var today = new Date().toISOString().split('T')[0];
+  var total = 0, bookedToday = 0;
+  
+  Object.keys(ROOMS).forEach(function(id) {
+    var r = ROOMS[id];
+    total += r.flexible ? CONFIGS[data.config[id]||'2bed'].units : 1;
+    (data.booked[id]||[]).forEach(function(b) {
+      if (b.date === today) bookedToday++;
     });
+  });
+  
+  var avail = total - bookedToday;
+  document.getElementById('summaryRow').innerHTML = `
+    <div class="summary-card"><div class="label">Available Today</div><div class="value green">${avail}</div></div>
+    <div class="summary-card"><div class="label">Booked Today</div><div class="value red">${bookedToday}</div></div>
+    <div class="summary-card"><div class="label">Total Units</div><div class="value gold">${total}</div></div>
+    <div class="summary-card"><div class="label">Last Deploy</div><div class="value" style="font-size:13px;font-family:'Inter',sans-serif;">${data.lastDeploy ? timeAgo(data.lastDeploy) : 'Never'}</div></div>
+  `;
+  document.getElementById('totalSellable').textContent = total;
+}
+
+// ---- STANDARD ROOM CARD ----
+function renderGrid(gridId, ids) {
+  document.getElementById(gridId).innerHTML = ids.map(roomCard).join('');
+}
+
+function roomCard(id) {
+  var r = ROOMS[id];
+  var booked = data.booked[id] || [];
+  var blocked = data.blocked[id] || [];
+  
+  var all = [];
+  booked.forEach(function(b) { all.push({ date:b.date, guest:b.guest, type:'booked' }); });
+  blocked.forEach(function(d) { all.push({ date:d, guest:'', type:'blocked' }); });
+  all.sort(function(a,b) { return a.date.localeCompare(b.date); });
+  
+  var dot = all.length === 0 ? 'green' : (all.length < 3 ? 'orange' : 'red');
+  
+  return `
+    <div class="room-card">
+      <div class="room-top">
+        <h3><span class="dot ${dot}"></span> ${r.name} <span class="room-num">${r.room}</span></h3>
+        <span class="room-price">₦${r.price.toLocaleString()}</span>
+      </div>
+      <div class="date-pills">
+        ${all.length === 0 ? '<span class="no-dates">All dates available</span>' : ''}
+        ${all.map(function(d) {
+          return `
+            <span class="date-pill ${d.type==='blocked'?'blocked':''}">
+              ${fmtDate(d.date)}
+              ${d.guest ? '<span class="guest">'+d.guest+'</span>' : ''}
+              ${d.type==='blocked' ? '· blocked' : ''}
+              <span class="remove" onclick="remove('${id}','${d.date}','${d.type}')">×</span>
+            </span>`;
+        }).join('')}
+      </div>
+      <div class="add-row">
+        <input type="date" id="dt-${id}" min="${new Date().toISOString().split('T')[0]}" />
+        <input type="text" id="gst-${id}" placeholder="Guest name" />
+        <select id="tp-${id}"><option value="booked">Booked</option><option value="blocked">Blocked</option></select>
+        <button class="btn btn-xs btn-primary" onclick="add('${id}')">+ Add</button>
+      </div>
+    </div>`;
+}
+
+// ---- TWO BEDROOM CARDS ----
+function renderTwoBedGrid() {
+  document.getElementById('twobedGrid').innerHTML = ['tbA','tbB'].map(twoBedCard).join('');
+}
+
+function twoBedCard(id) {
+  var r = ROOMS[id];
+  var cfg = data.config[id] || '2bed';
+  var c = CONFIGS[cfg];
+  var booked = data.booked[id] || [];
+  var blocked = data.blocked[id] || [];
+  
+  var all = [];
+  booked.forEach(function(b) { all.push({ date:b.date, guest:b.guest, type:'booked' }); });
+  blocked.forEach(function(d) { all.push({ date:d, guest:'', type:'blocked' }); });
+  all.sort(function(a,b) { return a.date.localeCompare(b.date); });
+  
+  var dot = all.length === 0 ? 'green' : (all.length < 3 ? 'orange' : 'red');
+  
+  return `
+    <div class="room-card flexible">
+      <div class="room-top">
+        <h3><span class="dot ${dot}"></span> ${r.name} <span class="room-num">${r.room}</span></h3>
+      </div>
+      <div class="config-row">
+        ${Object.keys(CONFIGS).map(function(key) {
+          var o = CONFIGS[key];
+          return '<button class="config-btn'+(cfg===key?' active':'')+'" onclick="setConfig(\''+id+'\',\''+key+'\')">'+o.label+' · ₦'+o.price.toLocaleString()+'</button>';
+        }).join('')}
+      </div>
+      <div class="config-detail">Now: <strong>${c.label}</strong> — ${c.desc} · <strong>${c.units} unit${c.units>1?'s':''}</strong> · <strong>₦${c.price.toLocaleString()}</strong></div>
+      <div class="date-pills">
+        ${all.length === 0 ? '<span class="no-dates">All dates available</span>' : ''}
+        ${all.map(function(d) {
+          return `
+            <span class="date-pill ${d.type==='blocked'?'blocked':''}">
+              ${fmtDate(d.date)}
+              ${d.guest ? '<span class="guest">'+d.guest+'</span>' : ''}
+              ${d.type==='blocked' ? '· blocked' : ''}
+              <span class="remove" onclick="remove('${id}','${d.date}','${d.type}')">×</span>
+            </span>`;
+        }).join('')}
+      </div>
+      <div class="add-row">
+        <input type="date" id="dt-${id}" min="${new Date().toISOString().split('T')[0]}" />
+        <input type="text" id="gst-${id}" placeholder="Guest name" />
+        <select id="tp-${id}"><option value="booked">Booked</option><option value="blocked">Blocked</option></select>
+        <button class="btn btn-xs btn-primary" onclick="add('${id}')">+ Add</button>
+      </div>
+    </div>`;
+}
+
+// ---- ACTIONS ----
+function add(id) {
+  var d = document.getElementById('dt-'+id).value;
+  var g = document.getElementById('gst-'+id).value.trim();
+  var t = document.getElementById('tp-'+id).value;
+  if (!d) return toast('Pick a date','err');
+  
+  var all = [];
+  (data.booked[id]||[]).forEach(function(b) { all.push(b.date); });
+  (data.blocked[id]||[]).forEach(function(b) { all.push(b); });
+  if (all.indexOf(d) !== -1) return toast('Date already set','err');
+  
+  if (t === 'blocked') {
+    data.blocked[id].push(d);
+    data.blocked[id].sort();
+  } else {
+    data.booked[id].push({ date:d, guest:g||'Guest' });
+    data.booked[id].sort(function(a,b) { return a.date.localeCompare(b.date); });
+  }
+  
+  document.getElementById('dt-'+id).value = '';
+  document.getElementById('gst-'+id).value = '';
+  save(); render();
+  toast(ROOMS[id].room + ' · ' + fmtDate(d) + (g?' · '+g:'') + ' · ' + (t==='blocked'?'Blocked':'Booked'), 'ok');
+}
+
+function remove(id, date, type) {
+  if (!confirm('Remove ' + fmtDate(date) + ' from ' + ROOMS[id].room + '?')) return;
+  if (type === 'blocked') {
+    var i = data.blocked[id].indexOf(date);
+    if (i !== -1) data.blocked[id].splice(i, 1);
+  } else {
+    data.booked[id] = (data.booked[id]||[]).filter(function(b) { return b.date !== date; });
+  }
+  save(); render();
+  toast('Removed ' + fmtDate(date), 'ok');
+}
+
+function setConfig(id, cfg) {
+  if (!confirm('Change ' + ROOMS[id].name + ' to ' + CONFIGS[cfg].label + '?\n\n' + CONFIGS[cfg].desc + '\nPrice: ₦' + CONFIGS[cfg].price.toLocaleString() + '\nUnits: ' + CONFIGS[cfg].units)) return;
+  data.config[id] = cfg;
+  save(); render();
+  toast(ROOMS[id].name + ' → ' + CONFIGS[cfg].label, 'ok');
+}
+
+// ---- DEPLOY ----
+function deploy() {
+  var btn = document.getElementById('deployBtn');
+  var orig = btn.textContent;
+  btn.textContent = 'Building...';
+  btn.disabled = true;
+  
+  var json = buildJSON();
+  
+  // Try to write directly to the site if we're on the same domain
+  // For Netlify, this requires a deploy. For now, copy to clipboard.
+  navigator.clipboard.writeText(json).then(function() {
+    data.lastDeploy = new Date().toISOString();
+    save(); updateStatus();
+    toast('✅ rooms.json copied! Upload to your site root.','ok');
+  }).catch(function() {
+    // Fallback: download
+    var blob = new Blob([json], { type:'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'rooms.json';
+    a.click();
+    data.lastDeploy = new Date().toISOString();
+    save(); updateStatus();
+    toast('📥 Downloaded rooms.json — upload to site root','err');
+  });
+  
+  btn.textContent = orig;
+  btn.disabled = false;
+}
+
+function copyJSON() {
+  navigator.clipboard.writeText(buildJSON()).then(function() {
+    toast('📋 JSON copied','ok');
+  });
+}
+
+function buildJSON() {
+  var cats = {
+    comfort: { name:'Comfort Zone',             total:0, price:85000,  booked:[], blocked:[] },
+    super:   { name:'Super Comfort Zone',       total:0, price:110000, booked:[], blocked:[] },
+    studio:  { name:'Studio Sanctuary',         total:0, price:150000, booked:[], blocked:[] },
+    onebed:  { name:'One Bedroom Apartment',    total:0, price:210000, booked:[], blocked:[] },
+    twobed:  { name:'Two Bedroom Apartment',    total:0, price:280000, booked:[], blocked:[] }
+  };
+  
+  Object.keys(ROOMS).forEach(function(id) {
+    var r = ROOMS[id];
+    var cat = cats[r.cat];
+    if (!cat) return;
     
-    // ============================================================
-    // RENDER
-    // ============================================================
-    function renderAll() {
-      renderSummary();
-      renderRooms();
-      updateStatus();
-    }
+    var units = r.flexible ? CONFIGS[data.config[id]||'2bed'].units : 1;
+    var price = r.flexible ? CONFIGS[data.config[id]||'2bed'].price : r.price;
+    cat.total += units;
+    cat.price = price; // Last one wins for display
     
-    function renderSummary() {
-      var totalRooms = 0;
-      var bookedToday = 0;
-      var pendingCount = 0;
-      
-      var today = new Date().toISOString().split('T')[0];
-      
-      Object.keys(ROOMS).forEach(function(id) {
-        totalRooms += ROOMS[id].total;
-        if (data.bookings[id].indexOf(today) !== -1) bookedToday++;
-      });
-      
-      var available = totalRooms - bookedToday;
-      
-      document.getElementById('summaryRow').innerHTML = `
-        <div class="summary-card">
-          <div class="label">Available Today</div>
-          <div class="value available">${available}</div>
-        </div>
-        <div class="summary-card">
-          <div class="label">Booked Today</div>
-          <div class="value booked">${bookedToday}</div>
-        </div>
-        <div class="summary-card">
-          <div class="label">Total Rooms</div>
-          <div class="value">${totalRooms}</div>
-        </div>
-        <div class="summary-card">
-          <div class="label">Last Deploy</div>
-          <div class="value" style="font-size:14px;font-family:'Inter',sans-serif;">${data.lastDeploy ? formatTime(data.lastDeploy) : 'Never'}</div>
-        </div>
-      `;
-    }
-    
-    function renderRooms() {
-      var html = '';
-      
-      Object.keys(ROOMS).forEach(function(id) {
-        var room = ROOMS[id];
-        var bookedDates = data.bookings[id] || [];
-        var blockedDates = data.blocked[id] || [];
-        var allBlocked = bookedDates.concat(blockedDates).sort();
-        var available = room.total - countOverlap(bookedDates);
-        
-        html += `
-          <div class="room-card">
-            <div class="room-card-header">
-              <h3>${room.name}</h3>
-              <div class="room-stats">
-                <span><span class="dot green"></span> ${available}/${room.total} available</span>
-                <span><span class="dot red"></span> ${bookedDates.length} booked</span>
-              </div>
-            </div>
-            
-            <div class="date-pills">
-              ${allBlocked.length === 0 ? '<span class="no-dates">All dates available</span>' : ''}
-              ${allBlocked.map(function(date) {
-                var isBlocked = blockedDates.indexOf(date) !== -1;
-                return `
-                  <span class="date-pill" style="${isBlocked ? 'border-color:var(--orange);' : ''}">
-                    ${formatDate(date)}
-                    ${isBlocked ? '(blocked)' : ''}
-                    <span class="remove" onclick="removeDate('${id}', '${date}', '${isBlocked ? 'blocked' : 'booked'}')">×</span>
-                  </span>
-                `;
-              }).join('')}
-            </div>
-            
-            <div class="add-form">
-              <input type="date" id="date-${id}" min="${new Date().toISOString().split('T')[0]}" />
-              <select id="type-${id}">
-                <option value="booked">Booked</option>
-                <option value="blocked">Blocked</option>
-              </select>
-              <input type="text" id="guest-${id}" placeholder="Guest name (optional)" style="min-width:140px;" />
-              <button class="btn btn-sm btn-primary" onclick="addDate('${id}')">+ Add</button>
-            </div>
-          </div>
-        `;
-      });
-      
-      document.getElementById('roomGrid').innerHTML = html;
-    }
-    
-    function updateStatus() {
-      var el = document.getElementById('lastDeploy');
-      if (data.lastDeploy) {
-        el.textContent = 'Last deployed: ' + formatTime(data.lastDeploy);
-      } else {
-        el.textContent = 'Not yet deployed';
-      }
-    }
-    
-    // ============================================================
-    // ACTIONS
-    // ============================================================
-    function addDate(roomId) {
-      var dateInput = document.getElementById('date-' + roomId);
-      var typeSelect = document.getElementById('type-' + roomId);
-      var guestInput = document.getElementById('guest-' + roomId);
-      
-      var date = dateInput.value;
-      var type = typeSelect.value;
-      var guest = guestInput.value.trim();
-      
-      if (!date) {
-        toast('Please select a date', 'error');
-        return;
-      }
-      
-      var targetArray = type === 'blocked' ? data.blocked[roomId] : data.bookings[roomId];
-      
-      if (targetArray.indexOf(date) !== -1) {
-        toast('Date already exists for this room', 'error');
-        return;
-      }
-      
-      targetArray.push(date);
-      targetArray.sort();
-      saveData();
-      renderAll();
-      
-      dateInput.value = '';
-      guestInput.value = '';
-      
-      var label = type === 'blocked' ? 'Blocked' : 'Booked';
-      toast((guest ? guest + ' · ' : '') + ROOMS[roomId].name + ' · ' + formatDate(date) + ' · ' + label, 'success');
-    }
-    
-    function removeDate(roomId, date, type) {
-      var targetArray = type === 'blocked' ? data.blocked[roomId] : data.bookings[roomId];
-      var index = targetArray.indexOf(date);
-      if (index !== -1) {
-        targetArray.splice(index, 1);
-        saveData();
-        renderAll();
-        toast('Removed ' + formatDate(date), 'success');
-      }
-    }
-    
-    // ============================================================
-    // DEPLOY
-    // ============================================================
-    function deployNow() {
-      var json = buildJSON();
-      
-      // Copy to clipboard
-      navigator.clipboard.writeText(json).then(function() {
-        data.lastDeploy = new Date().toISOString();
-        saveData();
-        updateStatus();
-        toast('✅ JSON copied! Upload to ulolagos.netlify.app/rooms.json', 'success');
-      }).catch(function() {
-        // Fallback: show in a dialog
-        showJSONDialog(json);
-      });
-    }
-    
-    function buildJSON() {
-      var rooms = {};
-      
-      Object.keys(ROOMS).forEach(function(id) {
-        rooms[id] = {
-          name: ROOMS[id].name,
-          totalRooms: ROOMS[id].total,
-          baseAvailability: ROOMS[id].total,
-          basePrice: ROOMS[id].price,
-          bookedDates: (data.bookings[id] || []).slice(),
-          blockedDates: (data.blocked[id] || []).slice()
-        };
-      });
-      
-      return JSON.stringify({
-        _generated: new Date().toISOString(),
-        _hotel: 'Ulõ Aparthotel',
-        rooms: rooms
-      }, null, 2);
-    }
-    
-    function exportJSON() {
-      var json = buildJSON();
-      navigator.clipboard.writeText(json).then(function() {
-        toast('📋 JSON copied to clipboard', 'success');
-      });
-    }
-    
-    function showJSONDialog(json) {
-      var w = window.open('', 'rooms.json', 'width=600,height=500');
-      w.document.write('<pre style="font-family:monospace;font-size:11px;padding:20px;">' + json.replace(/</g, '&lt;') + '</pre>');
-      w.document.title = 'rooms.json';
-    }
-    
-    // ============================================================
-    // HELPERS
-    // ============================================================
-    function countOverlap(dates) {
-      // Count how many of these dates are in the future
-      var today = new Date().toISOString().split('T')[0];
-      return dates.filter(function(d) { return d >= today; }).length;
-    }
-    
-    function formatDate(dateStr) {
-      var d = new Date(dateStr + 'T00:00:00');
-      var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-      return months[d.getMonth()] + ' ' + d.getDate();
-    }
-    
-    function formatTime(isoString) {
-      var d = new Date(isoString);
-      var now = new Date();
-      var diff = Math.floor((now - d) / 60000);
-      
-      if (diff < 1) return 'Just now';
-      if (diff < 60) return diff + 'm ago';
-      if (diff < 1440) return Math.floor(diff / 60) + 'h ago';
-      return d.toLocaleDateString();
-    }
-    
-    function toast(msg, type) {
-      var el = document.getElementById('toast');
-      el.textContent = msg;
-      el.className = 'toast ' + (type || '') + ' show';
-      clearTimeout(el._timeout);
-      el._timeout = setTimeout(function() {
-        el.classList.remove('show');
-      }, 2500);
-    }
-  </script>
+    (data.booked[id]||[]).forEach(function(b) { cat.booked.push(b.date); });
+    (data.blocked[id]||[]).forEach(function(d) { cat.blocked.push(d); });
+  });
+  
+  // Deduplicate
+  var out = { _generated: new Date().toISOString(), _hotel:'Ulõ Aparthotel', categories:{} };
+  Object.keys(cats).forEach(function(key) {
+    var c = cats[key];
+    out.categories[key] = {
+      name: c.name,
+      totalAvailable: c.total,
+      price: c.price,
+      bookedDates: [...new Set(c.booked)].sort(),
+      blockedDates: [...new Set(c.blocked)].sort()
+    };
+  });
+  
+  return JSON.stringify(out, null, 2);
+}
+
+// ---- STATUS ----
+function updateStatus() {
+  document.getElementById('deployStatus').textContent = data.lastDeploy ? 'Last deploy: ' + timeAgo(data.lastDeploy) : 'Ready — no deploys yet';
+}
+
+// ---- HELPERS ----
+function fmtDate(d) {
+  var m = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var dt = new Date(d + 'T00:00:00');
+  return m[dt.getMonth()] + ' ' + dt.getDate();
+}
+
+function timeAgo(iso) {
+  var diff = Math.floor((Date.now() - new Date(iso).getTime()) / 60000);
+  if (diff < 1) return 'Just now';
+  if (diff < 60) return diff + 'm ago';
+  if (diff < 1440) return Math.floor(diff/60) + 'h ago';
+  return new Date(iso).toLocaleDateString();
+}
+
+function toast(msg, type) {
+  var el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'toast ' + (type||'') + ' show';
+  clearTimeout(el._timer);
+  el._timer = setTimeout(function() { el.classList.remove('show'); }, 2200);
+}
+
+// ---- INIT ----
+render();
+</script>
+
 </body>
 </html>
