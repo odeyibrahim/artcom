@@ -123,6 +123,24 @@
       --ease-smooth: ease;
     }
 
+
+
+.reduce-blur .header,
+.reduce-blur .bottom-bar,
+.reduce-blur .invitation,
+.reduce-blur .slide-text,
+.reduce-blur .nav-menu,
+.reduce-blur .section-indicator {
+  backdrop-filter: blur(4px);
+}
+.reduce-blur .slide-text {
+  background: rgba(0,0,0,0.3);
+}
+.reduce-blur .slide::before {
+  transition: none;
+}
+
+
     /* ---------- Layout ---------- */
     :root {
       --header-h: 64px;
@@ -877,6 +895,14 @@
       window.addEventListener('load', function(){ setTimeout(function(){ preloader.classList.add('hidden'); document.body.classList.add('loaded'); }, 1800); });
       function showBriefLoader(cb){ preloader.classList.remove('hidden'); preloader.classList.add('brief'); setTimeout(function(){ preloader.classList.add('hidden'); if(cb) cb(); }, 600); }
 
+
+// Downgrade effects on older iOS devices
+var isSlowIOS = /iPad|iPhone/.test(navigator.userAgent) && 
+  parseFloat(navigator.appVersion.match(/OS (\d+)_/)?.[1] || '99') < 16;
+if (isSlowIOS) {
+  document.documentElement.classList.add('reduce-blur');
+  document.documentElement.style.setProperty('--dur-atmospheric', '0s');
+}
       var navToggle = document.getElementById('navToggle'), navMenu = document.getElementById('navMenu');
       navToggle.addEventListener('click', function(){ var o = navToggle.classList.toggle('open'); navMenu.classList.toggle('open'); navToggle.setAttribute('aria-expanded', o); });
       document.addEventListener('click', function(e){ if(!e.target.closest('.header')&&!e.target.closest('.nav-menu')){ navToggle.classList.remove('open'); navMenu.classList.remove('open'); navToggle.setAttribute('aria-expanded','false'); } });
